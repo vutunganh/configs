@@ -170,7 +170,5 @@ exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrol
 
 # Autostart
 exec --no-startup-id redshift-gtk
-exec_always --no-startup-id powertop --auto-tune
-exec --no-startup-id ssh-agent
 exec --no-startup-id nm-applet
 exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:alt_shift_toggle"
