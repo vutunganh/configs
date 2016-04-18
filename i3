@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Roboto regular 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -162,8 +162,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -2% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightness
+
+# Screenshooting
+bindsym Ctrl+Shift+Print exec 'gnome-screenshot -c -a'
+bindsym Print exec gnome-screenshot 
+bindsym Ctrl+Print exec 'gnome-screenshot -c'
 
 # Reverse scrolling
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -107, -107
