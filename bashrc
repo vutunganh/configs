@@ -5,10 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval `ssh-agent` 2> /dev/null 1>&2
-    ssh-add
-fi
+# if [ -z "$SSH_AUTH_SOCK" ] ; then
+#     eval `ssh-agent` 2> /dev/null 1>&2
+#     ssh-add
+# fi
 
 alias ls='ls --color=auto'
 alias pa2='g++ -std=c++11 -Wall -pedantic -Wextra -g'
