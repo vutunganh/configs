@@ -411,9 +411,6 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -490,6 +487,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
