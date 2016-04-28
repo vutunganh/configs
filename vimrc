@@ -187,7 +187,7 @@ set number
 syntax enable 
 
 try
-    colorscheme peaksea
+    colorscheme elflord
 catch
 endtry
 
