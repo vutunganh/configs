@@ -178,6 +178,7 @@ set foldcolumn=1
 
 " Show line numbers
 set number
+set relativenumber
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -187,7 +188,7 @@ set number
 syntax enable 
 
 try
-    colorscheme peaksea
+    colorscheme elflord
 catch
 endtry
 
@@ -410,6 +411,9 @@ map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" Immediately paste the buffer
+nnoremap <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
