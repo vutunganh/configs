@@ -12,7 +12,8 @@
 
 alias ls='ls --color=auto'
 alias pa2='g++ -std=c++11 -Wall -pedantic -Wextra -g -D__VUTUNGAN__'
-alias cformat='indent -bad -bap -bbb -blf -bli4 -bls -bs -ci4 -i4 -ip0 -nbbo -nbfda -ncdw -nce -nlp -npsl -pcs -saf -sai -saw'
+alias cformat='indent -bad -bap -bbb -nbbo -bc -bl -bli0 -blf -bls -bs -cbi0 -cdb -ncdw -nce -ci4 -cs -bfda -bfde -i4 -ip0 -nbfda -nce -nlp -pcs -pmt -ppi4 -prs -npsl -saf -sai -saw -nsob -nss'
+alias py2=python2
 
 PS1='\u@\h \w \$ '
 
