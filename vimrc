@@ -230,8 +230,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -416,9 +416,6 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" Immediately paste the buffer
-nnoremap <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -475,10 +472,6 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Make VIM remember position in file after reopen
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UltiSnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
