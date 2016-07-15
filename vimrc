@@ -493,7 +493,8 @@ let g:UltiSnipsSnippetsDir="~/.vim/Ultisnips"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
+let g:ycm_server_python_binary_path = '/usr/bin/python2'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
