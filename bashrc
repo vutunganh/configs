@@ -16,6 +16,3 @@ alias cformat='indent -bad -bap -bbb -nbbo -bc -bl -bli0 -blf -bls -bs -cbi0 -cd
 alias py2=python2
 
 PS1='\u@\h \w \$ '
-
-# gnome-terminal opens current directory in new windows or tabs
-. /etc/profile.d/vte.sh
