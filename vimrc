@@ -15,9 +15,16 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 Plugin 'itchyny/lightline.vim'
 Plugin 'rking/ag.vim'
-Plugin 'powerline/fonts'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'bling/vim-bufferline'
+Plugin 'mbbill/undotree'
+Plugin 'dracula/vim'
+
+
 
 " Track the engine.
 Plugin 'SirVer/ultisnips'
@@ -128,9 +135,9 @@ set wildmenu
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+  set wildignore+=.git\*,.hg\*,.svn\*
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+  set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
 " Always show current position
@@ -190,7 +197,7 @@ set relativenumber
 syntax enable 
 
 try
-    colorscheme elflord
+  colorscheme dracula
 catch
 endtry
 
@@ -198,11 +205,12 @@ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+  set guioptions-=T
+  set guioptions-=e
+  set guitablabel=%M\ %t
 endif
+
+set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -229,16 +237,18 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=2
+" 1 tab == 2 spaces
 set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " Linebreak on 500 characters
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 set wrap "Wrap lines
 
 
@@ -254,9 +264,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
@@ -420,56 +427,56 @@ map <leader>pp :setlocal paste!<cr>
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+  exe "menu Foo.Bar :" . a:str
+  emenu Foo.Bar
+  unmenu Foo
 endfunction 
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+  let l:saved_reg = @"
+  execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'gv'
-        call CmdLine("Ag \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
+  if a:direction == 'gv'
+    call CmdLine("Ag \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+  let @/ = l:pattern
+  let @" = l:saved_reg
 endfunction
 
 
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
+  if &paste
+    return 'PASTE MODE  '
+  endif
+  return ''
 endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+  let l:currentBufNum = bufnr("%")
+  let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+  if buflisted(l:alternateBufNum)
+    buffer #
+  else
+    bnext
+  endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+  if bufnr("%") == l:currentBufNum
+    new
+  endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
+  if buflisted(l:currentBufNum)
+    execute("bdelete! ".l:currentBufNum)
+  endif
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -480,11 +487,14 @@ endfunction
 set cinoptions+=g0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UltiSnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<End>"
+
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsExpandTrigger="<End>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/Ultisnips"
 
@@ -494,71 +504,82 @@ let g:UltiSnipsSnippetsDir="~/.vim/Ultisnips"
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_server_python_interpreter = '/usr/bin/python2'
-let g:ycm_server_python_binary_path = '/usr/bin/python2'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lightline
+" => Lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-            \ 'colorscheme': 'wombat',
-            \ 'mode_map': { 'c': 'NORMAL' },
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
-            \   'right': [ [ 'lineinfo', 'linetotal' ] ]
-            \ },
-            \ 'component_function': {
-            \   'modified': 'LightLineModified',
-            \   'readonly': 'LightLineReadonly',
-            \   'fugitive': 'LightLineFugitive',
-            \   'filename': 'LightLineFilename',
-            \   'fileformat': 'LightLineFileformat',
-            \   'filetype': 'LightLineFiletype',
-            \   'fileencoding': 'LightLineFileencoding',
-            \   'mode': 'LightLineMode',
-            \ },
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '', 'right': '' }
-            \ }
+      \ 'colorscheme': 'wombat',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'bufferline' ] ],
+      \   'right': [ [ 'lineinfo', 'linetotal' ] ]
+      \ },
+      \ 'component': {
+      \ 'bufferline': '%{bufferline#refresh_status()}%{g:bufferline_status_info.before . g:bufferline_status_info.current . g:bufferline_status_info.after}'
+      \ },
+      \ 'component_function': {
+      \   'modified': 'LightLineModified',
+      \   'readonly': 'LightLineReadonly',
+      \   'fugitive': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename',
+      \   'bufferline': 'LightLineBufferline',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
 let g:lightline.component = {
-    \ 'linetotal': '%L' }
+      \ 'linetotal': '%L' }
 
 function! LightLineModified()
-    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! LightLineReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '' : ''
 endfunction
 
 function! LightLineFilename()
-    return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \  &ft == 'unite' ? unite#get_status_string() :
-                \  &ft == 'vimshell' ? vimshell#get_status_string() :
-                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineBufferline()
+  let info = get(g:, 'bufferline_status_info', {})
+  if empty(info)
+    return ''
+  endif
+  return info.before . info.current . info.after
 endfunction
 
 function! LightLineFugitive()
-    if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? ''._ : ''
-    endif
-    return ''
+  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? ''._ : ''
+  endif
+  return ''
 endfunction
 
 function! LightLineFileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
+  return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! LightLineFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! LightLineFileencoding()
-    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! LightLineMode()
-    return winwidth(0) > 60 ? lightline#mode() : ''
+  return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
