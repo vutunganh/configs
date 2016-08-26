@@ -1,4 +1,4 @@
-" Updated on 16. 6. 2016
+" Updated on 26. 8. 2016
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
