@@ -22,5 +22,5 @@ function pa2 ( )
 {
   FILENAME="$1"
   shift
-  g++ -std=c++11 -Wall -pedantic -Wextra -g -D__VUTUNGAN__ "${FILENAME}" -o "${FILENAME}.out" "$@"
+  g++ -std=c++11 -Wall -pedantic -Wextra -g -D__VUTUNGAN__ "${FILENAME}" -o "${FILENAME%.cpp}.out" "$@"
 }
