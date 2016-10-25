@@ -47,6 +47,7 @@ gtk-theme-arc
 gtk-xfce-engine
 gvim
 gzip
+hdparm
 htop
 i3lock
 indent
@@ -74,6 +75,7 @@ man-db
 man-pages
 mdadm
 mono
+monodevelop
 mousepad
 mupdf
 nano
@@ -129,6 +131,9 @@ usbutils
 util-linux
 valgrind
 vi
+virtualbox
+virtualbox-host-dkms
+visual-studio-code
 wget
 which
 wpa_actiond
