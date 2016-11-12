@@ -27,8 +27,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 " Autocompletion 
 Plugin 'Valloric/YouCompleteMe'
-" Plugin 'maralla/completor.vim'
-
+Plugin 'rdnetto/YCM-Generator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
