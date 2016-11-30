@@ -10,18 +10,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 " Sensible defaults
-Plugin 'tpope/vim-sensible'
+" implemented by neovim
+" Plugin 'tpope/vim-sensible'
 " Bufferline
 Plugin 'bling/vim-bufferline'
 " Sick statusbar
 Plugin 'itchyny/lightline.vim'
 " Sick sick sick colorscheme
-Plugin 'morhetz/gruvbox'
 Plugin 'jacoborus/tender'
 "
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
 " Snippets
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
@@ -53,9 +52,11 @@ set ignorecase
 set smartcase
 set showmatch
 set incsearch
+set hlsearch
 set lazyredraw
 set mat=2
 set mouse=a
+set foldmethod=indent
 
 
 " > Editing
@@ -78,10 +79,13 @@ map <leader>pp :setlocal paste!<cr>
 """"""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
-colorscheme gruvbox
+colorscheme tender
 set foldcolumn=1
 set number
 set relativenumber
+set t_Co=256
+set cursorline
+set showcmd
 
 
 " > Keybindings
@@ -93,7 +97,7 @@ let g:mapleader = "\<Space>"
 map <leader>l :bnext!<cr>
 map <leader>h :bprevious!<cr>
 " close buffer
-map <leader>bc :bdelete<cr>
+map <leader>bd :bdelete<cr>
 " tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -104,6 +108,7 @@ map <leader>t<leader> :tabnext
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " 0 moves to the beginning of line
 map 0 ^
+nnoremap <leader><CR> :nohlsearch<CR>
 
 
 " > C++
