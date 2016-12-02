@@ -1,49 +1,33 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin()
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 " Sensible defaults
 " implemented by neovim
 " Plugin 'tpope/vim-sensible'
 " Bufferline
-Plugin 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 " Sick statusbar
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 " Sick sick sick colorscheme
-Plugin 'jacoborus/tender'
+Plug 'jacoborus/tender'
 "
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 " Snippets
-Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 " Autocompletion 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
+if has("nvim")
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'zchee/deoplete-clang'
+  Plug 'Shougo/neoinclude.vim'
+  Plug 'neomake/neomake'
+endif
+if !has("nvim")
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator'
+endif
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
-runtime! plugin/sensible.vim
+call plug#end()
 
 " > Behaviour
 """"""""""""""""""""""""""""""""""""""""
@@ -56,7 +40,6 @@ set hlsearch
 set lazyredraw
 set mat=2
 set mouse=a
-set foldmethod=indent
 
 
 " > Editing
@@ -117,11 +100,30 @@ nnoremap <leader><CR> :nohlsearch<CR>
 set cinoptions+=g0
 
 " > YouCompleteMe
+" deoplete in neovim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !has( "nvim" )
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_python_binary_path = '/usr/bin/python'
+endif
+
+
+" > Deoplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has( "nvim" )
+let g:deoplete#enable_at_startup = 1 
+let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
+let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
+
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+endif
+
 
 " > Ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
