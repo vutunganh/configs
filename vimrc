@@ -2,12 +2,12 @@ call plug#begin()
 
 " Sensible defaults
 " implemented by neovim
-" Plugin 'tpope/vim-sensible'
+if !has("nvim")
+Plug 'tpope/vim-sensible'
+endif
 " Bufferline
 Plug 'bling/vim-bufferline'
-" Sick statusbar
-Plug 'itchyny/lightline.vim'
-" Sick sick sick colorscheme
+" Colorscheme
 Plug 'jacoborus/tender'
 "
 Plug 'tpope/vim-surround'
@@ -16,15 +16,16 @@ Plug 'tpope/vim-commentary'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 " Autocompletion 
-if has("nvim")
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'zchee/deoplete-clang'
-  Plug 'Shougo/neoinclude.vim'
-  Plug 'neomake/neomake'
-endif
+ if has("nvim")
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+   Plug 'zchee/deoplete-clang'
+   Plug 'Shougo/neoinclude.vim'
+   Plug 'zchee/deoplete-jedi'
+ endif
 if !has("nvim")
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator'
+"  Plug 'Valloric/YouCompleteMe'
+"  Plug 'rdnetto/YCM-Generator'
+Plug 'ajh17/VimCompletesMe'
 endif
 
 call plug#end()
@@ -69,6 +70,11 @@ set relativenumber
 set t_Co=256
 set cursorline
 set showcmd
+set laststatus=2
+"set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+"set statusline=%<%.99F\ %h%w%m%r%y%=%-16(\ %l/%L\ %)
+set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L
+let g:bufferline_echo = 1
 
 
 " > Keybindings
@@ -121,50 +127,12 @@ let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'ob
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
 
 " > Ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 let g:UltiSnipsExpandTrigger="<c-t>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
-
-
-
-" > Lightline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" disable bufferline echoing
-let g:bufferline_echo = 0
-set laststatus=2
-let g:tender_lightline = 1
-let g:lightline = {
-      \ 'colorscheme': 'tender',
-      \ 'mode_map': { 'c' : 'NORMAL' },
-      \ 'active' : {
-      \   'left': [ [ 'mode', 'paste' ], [ 'filename', 'fugitive' ], [ 'bufferline' ] ],
-      \   'right' : [ [ 'lineinfo' ] ]
-      \ },
-      \ 'component_function' : {
-      \   'bufferline' : 'LightlineBufferline',
-      \   'fugitive' : 'LightlineFugitive'
-      \ }
-      \ }
-
-function! LightlineBufferline( )
-  call bufferline#refresh_status() 
-  let b = g:bufferline_status_info.before
-  let c = g:bufferline_status_info.current
-  let a = g:bufferline_status_info.after
-  return b . c . a
-endfunction
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? ''._ : ''
-  endif
-  return ''
-endfunction
