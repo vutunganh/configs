@@ -9,9 +9,10 @@ endif
 Plug 'bling/vim-bufferline'
 " Colorscheme
 Plug 'jacoborus/tender'
-"
+" Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'Raimondi/delimitMate'
 " Snippets
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
@@ -32,8 +33,11 @@ call plug#end()
 
 " > Behaviour
 """"""""""""""""""""""""""""""""""""""""
+" lines above/below cursor
 set scrolloff=5
+" ignore case when searching
 set ignorecase
+" cooperate with ignorecase
 set smartcase
 set showmatch
 set incsearch
@@ -98,6 +102,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " 0 moves to the beginning of line
 map 0 ^
 nnoremap <leader><CR> :nohlsearch<CR>
+
+nnoremap <F5> :make<CR>
 
 
 " > C++
