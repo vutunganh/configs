@@ -9,7 +9,6 @@ endif
 Plug 'bling/vim-bufferline'
 " Colorscheme
 Plug 'jacoborus/tender'
-Plug 'larsbs/vimterial'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -69,7 +68,7 @@ map <leader>pp :setlocal paste!<cr>
 """"""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
-colorscheme vimterial
+colorscheme tender
 set foldcolumn=1
 set number
 set relativenumber
