@@ -46,6 +46,9 @@ set hlsearch
 set lazyredraw
 set mat=2
 set mouse=a
+set noeb
+set vb
+set t_vb=
 
 
 " > Editing
@@ -144,3 +147,4 @@ let g:UltiSnipsExpandTrigger="<c-t>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsUsePythonVersion = 2
