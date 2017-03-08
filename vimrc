@@ -14,9 +14,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
-" Snippets
-Plug 'vutunganh/vim-snippets'
-Plug 'SirVer/ultisnips'
 " Autocompletion 
  if has("nvim")
    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -130,7 +127,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
-let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_refresh_always = 0
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
@@ -140,7 +137,7 @@ endif
 
 " > Ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<c-t>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsExpandTrigger="<c-t>"
+" let g:UltiSnipsJumpForwardTrigger="<c-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:UltiSnipsEditSplit="vertical"
