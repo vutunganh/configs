@@ -76,8 +76,6 @@ set t_Co=256
 set cursorline
 set showcmd
 set laststatus=2
-"set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
-"set statusline=%<%.99F\ %h%w%m%r%y%=%-16(\ %l/%L\ %)
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L
 let g:bufferline_echo = 1
 
@@ -105,6 +103,8 @@ map 0 ^
 nnoremap <leader><CR> :nohlsearch<CR>
 
 nnoremap <F5> :make<CR>
+
+cmap w!! !sudo tee % > /dev/null
 
 
 " > C++
