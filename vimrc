@@ -43,6 +43,9 @@ set hlsearch
 set lazyredraw
 set mat=2
 set mouse=a
+set noeb
+set vb
+set t_vb=
 
 
 " > Editing
