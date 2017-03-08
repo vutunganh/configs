@@ -8,7 +8,6 @@ endif
 " Bufferline
 Plug 'bling/vim-bufferline'
 " Colorscheme
-Plug 'tomasiser/vim-code-dark'
 Plug 'jacoborus/tender'
 " Easy editing
 Plug 'tpope/vim-surround'
@@ -28,6 +27,8 @@ if !has("nvim")
 Plug 'ajh17/VimCompletesMe'
 endif
 
+let g:codedark_conservative = 1
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 " > Behaviour
@@ -47,6 +48,12 @@ set mouse=a
 set noeb
 set vb
 set t_vb=
+" uses tab to select completion
+if !has( "nvim" )
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+endif
 
 
 " > Editing
@@ -69,11 +76,12 @@ map <leader>pp :setlocal paste!<cr>
 """"""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
+set t_Co=256
+set t_ut=
 colorscheme codedark
 set foldcolumn=1
 set number
 set relativenumber
-set t_Co=256
 set cursorline
 set showcmd
 set laststatus=2
