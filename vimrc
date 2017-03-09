@@ -14,9 +14,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
-" Snippets
-Plug 'vutunganh/vim-snippets'
-Plug 'SirVer/ultisnips'
 " Autocompletion 
  if has("nvim")
    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -30,6 +27,8 @@ if !has("nvim")
 Plug 'ajh17/VimCompletesMe'
 endif
 
+let g:codedark_conservative = 1
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 " > Behaviour
@@ -49,6 +48,12 @@ set mouse=a
 set noeb
 set vb
 set t_vb=
+" uses tab to select completion
+if !has( "nvim" )
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+endif
 
 
 " > Editing
@@ -71,16 +76,15 @@ map <leader>pp :setlocal paste!<cr>
 """"""""""""""""""""""""""""""""""""""""
 syntax enable
 set background=dark
-colorscheme tender
+set t_Co=256
+set t_ut=
+colorscheme codedark
 set foldcolumn=1
 set number
 set relativenumber
-set t_Co=256
 set cursorline
 set showcmd
 set laststatus=2
-"set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
-"set statusline=%<%.99F\ %h%w%m%r%y%=%-16(\ %l/%L\ %)
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L
 let g:bufferline_echo = 1
 
@@ -108,6 +112,8 @@ map 0 ^
 nnoremap <leader><CR> :nohlsearch<CR>
 
 nnoremap <F5> :make<CR>
+
+cmap w!! !sudo tee % > /dev/null
 
 
 " > C++
@@ -147,7 +153,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
-let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_refresh_always = 0
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
@@ -157,8 +163,7 @@ endif
 
 " > Ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<c-t>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsUsePythonVersion = 2
+" let g:UltiSnipsExpandTrigger="<c-t>"
+" let g:UltiSnipsJumpForwardTrigger="<c-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:UltiSnipsEditSplit="vertical"
