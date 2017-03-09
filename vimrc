@@ -125,6 +125,20 @@ let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_python_binary_path = '/usr/bin/python'
 endif
 
+" > VimCompletesMe
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup OmniCompletionSetup
+  autocmd!
+  autocmd FileType c          set omnifunc=ccomplete#Complete
+  autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
+  autocmd FileType python     set omnifunc=jedi#completions
+  autocmd FileType ruby       set omnifunc=rubycomplete#Complete
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+augroup END
+
 
 " > Deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
