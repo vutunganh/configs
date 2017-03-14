@@ -2,10 +2,10 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias cformat='indent -bad -bap -bbb -nbbo -bl -bli0 -blf \
--bls -bs -cbi0 -cdb -cdw -ce -ci2 -cs -bfda -bfde \
--i2 -ip0 -nbfda -nce -nlp -pcs -pmt -ppi2 -prs -npsl -saf \
--sai -saw -nsob -nss -nut'
+alias cformat='indent -bad -bap -bbb -nbbo -nbc -bl -blf -bli0 \
+-bls -cbi0 -cdb -ncdw -nce -ci2 -cli2 -ncs -nbfda -nbfde -hnl \
+-i2 -ip2 -l80 -lp -nlps -npcs -pi2 -pmt -ppi0 -prs -npsl -nsaf \
+-nsai -nsaw -sbi0 -sc -nsob -nss -nut'
 alias py2='python2'
 alias py='python'
 
