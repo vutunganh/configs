@@ -22,9 +22,8 @@ Plug 'tpope/vim-unimpaired'
    Plug 'zchee/deoplete-jedi'
  endif
 if !has("nvim")
-"  Plug 'Valloric/YouCompleteMe'
-"  Plug 'rdnetto/YCM-Generator'
-Plug 'ajh17/VimCompletesMe'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'rdnetto/YCM-Generator'
 endif
 
 let g:codedark_conservative = 1
@@ -76,7 +75,7 @@ syntax enable
 set background=dark
 set t_Co=256
 set t_ut=
-colorscheme codedark
+colorscheme tender
 set foldcolumn=1
 set number
 set relativenumber
