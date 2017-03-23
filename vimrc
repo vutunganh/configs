@@ -9,6 +9,7 @@ endif
 Plug 'bling/vim-bufferline'
 " Colorscheme
 Plug 'jacoborus/tender'
+Plug 'tomasiser/vim-code-dark'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -26,8 +27,6 @@ if !has("nvim")
   Plug 'rdnetto/YCM-Generator'
 endif
 
-let g:codedark_conservative = 1
-Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 " > Behaviour
