@@ -23,7 +23,7 @@ Plug 'tpope/vim-unimpaired'
    Plug 'zchee/deoplete-jedi'
  endif
 if !has("nvim")
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer'}
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 endif
 
@@ -46,10 +46,6 @@ set mouse=a
 set noeb
 set vb
 set t_vb=
-" uses tab to select completion
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
 
 " > Editing
@@ -116,6 +112,7 @@ cmap w!! !sudo tee % > /dev/null
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Don't indent access specifiers (public, private,...)
 set cinoptions+=g0
+set cinoptions+=N-s
 
 " > YouCompleteMe
 " deoplete in neovim
@@ -155,11 +152,3 @@ if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 endif
-
-
-" > Ultisnips
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:UltiSnipsExpandTrigger="<c-t>"
-" let g:UltiSnipsJumpForwardTrigger="<c-f>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" let g:UltiSnipsEditSplit="vertical"
