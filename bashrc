@@ -13,20 +13,6 @@ export TERM=xterm-256color
 
 PS1='\u@\h \w \$ '
 
-function pa2 ( )
-{
-  FILENAME="$1"
-  shift
-  g++ -std=c++11 -Wall -pedantic -Wextra -g -D__VUTUNGAN__ "${FILENAME}" -o "${FILENAME%.cpp}.out" "$@"
-}
-
-function cc ( )
-{
-  FILENAME="$1"
-  shift
-  gcc -std=c99 -Wall -pedantic -Wextra -g -D__VUTUNGAN__ "${FILENAME}" -o "${FILENAME%.c}.out" "$@"
-}
-
 if [ $( type -P 'nvim' ) ]; then
   alias vim='nvim'
 fi
