@@ -23,8 +23,8 @@ Plug 'tpope/vim-unimpaired'
    Plug 'zchee/deoplete-jedi'
  endif
 if !has("nvim")
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'rdnetto/YCM-Generator'
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer'}
+  Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 endif
 
 call plug#end()
