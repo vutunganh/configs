@@ -27,6 +27,6 @@ function cc ( )
   gcc -std=c99 -Wall -pedantic -Wextra -g -D__VUTUNGAN__ "${FILENAME}" -o "${FILENAME%.c}.out" "$@"
 }
 
-if [ -x /usr/bin/nvim ]; then
+if [ type -P 'nvim' ]; then
   alias vim='nvim'
 fi
