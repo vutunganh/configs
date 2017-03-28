@@ -9,7 +9,6 @@ endif
 Plug 'bling/vim-bufferline'
 " Colorscheme
 Plug 'jacoborus/tender'
-Plug 'tomasiser/vim-code-dark'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
