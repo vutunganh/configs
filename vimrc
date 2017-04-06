@@ -14,12 +14,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " Autocompletion 
  if has("nvim")
    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-   Plug 'zchee/deoplete-clang'
    Plug 'Shougo/neoinclude.vim'
+   Plug 'zchee/deoplete-clang'
    Plug 'zchee/deoplete-jedi'
+   Plug 'zchee/deoplete-go', { 'do': 'make' }
  endif
 if !has("nvim")
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
@@ -150,4 +152,11 @@ let g:deoplete#enable_refresh_always = 0
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
+endif
+
+" > Deoplete-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has( "nvim" )
+  let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
+  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 endif
