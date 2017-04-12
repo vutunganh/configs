@@ -154,13 +154,6 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 endif
 
-" > Deoplete-jedi
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("nvim")
-  let g:python_host_prog = '/usr/lib/python2.7/site-packages/neovim'
-  let g:python3_host_prog = '/usr/lib/python3.6/site-packages/neovim/'
-endif
-
 " > Deoplete-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has( "nvim" )
