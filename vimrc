@@ -87,6 +87,9 @@ let g:bufferline_echo = 1
 " leader key
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
+" moving around buffers
+map <leader>l :bnext!<cr>
+map <leader>h :bprevious!<cr>
 " close buffer
 map <leader>bd :bdelete<cr>
 " tabs
@@ -122,6 +125,21 @@ let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_python_binary_path = '/usr/bin/python'
 endif
 
+" > VimCompletesMe
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup OmniCompletionSetup
+  autocmd!
+  autocmd FileType c          set omnifunc=ccomplete#Complete
+  autocmd FileType php        set omnifunc=phpcomplete#CompletePHP
+  autocmd FileType python     set omnifunc=jedi#completions
+  autocmd FileType ruby       set omnifunc=rubycomplete#Complete
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType html       set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css        set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml        set omnifunc=xmlcomplete#CompleteTags
+augroup END
+
+
 " > Deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has( "nvim" )
@@ -129,7 +147,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
-let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_refresh_always = 0
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
