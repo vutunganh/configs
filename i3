@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Roboto regular 11
+font pango:Roboto regular 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -48,25 +48,12 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# now it might make sense
 # split in horizontal orientation
 bindsym $mod+c split v
 
@@ -132,16 +119,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -157,23 +138,17 @@ bar {
 }
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +2% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -2% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 2%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 2%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightness
-
-# Screenshooting
-bindsym Ctrl+Shift+Print exec 'gnome-screenshot -c -a'
-bindsym Print exec gnome-screenshot 
-bindsym Ctrl+Print exec 'gnome-screenshot -c'
 
 # Reverse scrolling
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -107, -107
 
 # Autostart
 exec --no-startup-id redshift-gtk
-exec --no-startup-id nm-applet
-exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:alt_shift_toggle"
+exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
