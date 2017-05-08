@@ -150,5 +150,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightnes
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -107, -107
 
 # Autostart
-exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift
 exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
+exec --no-startup-id polybar --reload arch
