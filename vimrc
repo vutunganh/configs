@@ -24,8 +24,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
    Plug 'zchee/deoplete-go', { 'do': 'make' }
  endif
 if !has("nvim")
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-  Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+  Plug 'maralla/completor.vim'
 endif
 
 call plug#end()
@@ -81,6 +80,10 @@ set laststatus=2
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L
 let g:bufferline_echo = 1
 
+if has('gui_running')
+  set guifont=Monospace\ 12
+endif
+
 
 " > Keybindings
 """"""""""""""""""""""""""""""""""""""""
@@ -118,11 +121,23 @@ set cinoptions+=N-s
 " > YouCompleteMe
 " deoplete in neovim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has( "nvim" )
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_server_python_interpreter = '/usr/bin/python'
-let g:ycm_python_binary_path = '/usr/bin/python'
+" if !has( "nvim" )
+" let g:ycm_enable_diagnostic_signs = 0
+" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" let g:ycm_server_python_interpreter = '/usr/bin/python'
+" let g:ycm_python_binary_path = '/usr/bin/python'
+" endif
+
+" > Completor.vim
+" deoplete in neovim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !has("nvim")
+  let g:completor_python_binary = '/usr/bin/python'
+  let g:completor_python_binary = '/usr/bin/clang'
+  " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 endif
 
 " > VimCompletesMe
