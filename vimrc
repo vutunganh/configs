@@ -37,6 +37,7 @@ set scrolloff=5
 set ignorecase
 " cooperate with ignorecase
 set smartcase
+set hidden
 set showmatch
 set incsearch
 set hlsearch
