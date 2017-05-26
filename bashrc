@@ -18,7 +18,7 @@ if [ $( type -P 'nvim' ) ]; then
 fi
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent -s`
+  eval `ssh-agent -s` > /dev/null 2>&1
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
