@@ -15,6 +15,7 @@ Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'w0rp/ale'
 " Autocompletion 
  if has("nvim")
    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -165,10 +166,18 @@ let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
 let g:deoplete#enable_refresh_always = 0
 
+let g:deoplete#complete_method = "omnifunc"
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 endif
+
+" > ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
 
 " > Deoplete-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
