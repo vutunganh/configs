@@ -21,8 +21,9 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent -s` > /dev/null 2>&1
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
+
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
+ssh-add -l > /dev/null 2>&1 || ssh-add > /dev/null 2>&1
 
 for f in ~/.ssh/*; do
   if [[ "$f" != *.pub && "$f" != 'known_hosts' ]]; then
