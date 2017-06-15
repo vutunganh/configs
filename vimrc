@@ -166,7 +166,6 @@ let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
 let g:deoplete#enable_refresh_always = 0
 
-let g:deoplete#complete_method = "omnifunc"
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 if !exists('g:deoplete#omni#input_patterns')
