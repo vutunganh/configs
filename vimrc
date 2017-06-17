@@ -14,7 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" Linting
 Plug 'w0rp/ale'
 " Autocompletion 
  if has("nvim")
@@ -22,7 +22,6 @@ Plug 'w0rp/ale'
    Plug 'Shougo/neoinclude.vim'
    Plug 'zchee/deoplete-clang'
    Plug 'zchee/deoplete-jedi'
-   Plug 'zchee/deoplete-go', { 'do': 'make' }
  endif
 if !has("nvim")
   Plug 'maralla/completor.vim'
