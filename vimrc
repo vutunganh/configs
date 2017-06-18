@@ -112,6 +112,8 @@ nnoremap <F5> :make<CR>
 
 cmap w!! !sudo tee % > /dev/null
 
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " > C++
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,10 +137,6 @@ set cinoptions+=N-s
 if !has("nvim")
   let g:completor_python_binary = '/usr/bin/python'
   let g:completor_python_binary = '/usr/bin/clang'
-  " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 endif
 
 " > VimCompletesMe
@@ -162,10 +160,8 @@ if has( "nvim" )
 let g:deoplete#enable_at_startup = 1 
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
-let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++11', 'objc': 'c11', 'objcpp': 'c++1z'}
+let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++14', 'objc': 'c11', 'objcpp': 'c++1z'}
 let g:deoplete#enable_refresh_always = 0
-
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
@@ -176,10 +172,3 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
-
-" > Deoplete-go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has( "nvim" )
-  let g:deoplete#sources#go#gocode_binary = '~/go/bin/gocode'
-  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-endif
