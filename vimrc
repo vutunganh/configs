@@ -3,7 +3,7 @@ call plug#begin()
 " Sensible defaults
 " implemented by neovim
 if !has("nvim")
-Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-sensible'
 endif
 " Bufferline
 Plug 'bling/vim-bufferline'
@@ -14,15 +14,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
-" Linting
-Plug 'w0rp/ale'
 " Autocompletion 
- if has("nvim")
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-   Plug 'Shougo/neoinclude.vim'
-   Plug 'zchee/deoplete-clang'
-   Plug 'zchee/deoplete-jedi'
- endif
+if has("nvim")
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/neoinclude.vim'
+  Plug 'zchee/deoplete-clang'
+  Plug 'zchee/deoplete-jedi'
+endif
 if !has("nvim")
   Plug 'maralla/completor.vim'
 endif
