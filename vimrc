@@ -18,8 +18,8 @@ Plug 'tpope/vim-unimpaired'
 if has("nvim")
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neoinclude.vim'
-  Plug 'zchee/deoplete-clang'
-  Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-clang', { 'for': 'cpp'}
+  Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 endif
 if !has("nvim")
   Plug 'maralla/completor.vim'
