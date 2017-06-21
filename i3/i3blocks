@@ -34,8 +34,8 @@ markup=none
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=VOL
-#label=♪
+# label=VOL
+label=♪
 instance=Master
 #instance=PCM
 interval=once
@@ -101,10 +101,10 @@ interval=5
 #
 # The battery instance defaults to 0.
 [battery]
-label=BAT
-#label=⚡
+# label=BAT
+label=⚡
 #instance=1
-interval=30
+interval=120
 
 # Date Time
 #
