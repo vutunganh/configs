@@ -1,10 +1,5 @@
 call plug#begin()
 
-" Sensible defaults
-" implemented by neovim
-if !has("nvim")
-  Plug 'tpope/vim-sensible'
-endif
 " Bufferline
 Plug 'bling/vim-bufferline'
 " Colorscheme
@@ -18,9 +13,10 @@ Plug 'tpope/vim-unimpaired'
 if has("nvim")
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neoinclude.vim'
-  Plug 'zchee/deoplete-clang', { 'for': 'cpp'}
+  Plug 'zchee/deoplete-clang', { 'for': 'cpp' }
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 endif
+
 if !has("nvim")
   Plug 'maralla/completor.vim'
 endif
@@ -70,7 +66,7 @@ set background=dark
 set t_Co=256
 set t_ut=
 colorscheme tender
-set foldcolumn=1
+set foldcolumn=0
 set number
 set relativenumber
 set cursorline
@@ -119,22 +115,12 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 set cinoptions+=g0
 set cinoptions+=N-s
 
-" > YouCompleteMe
-" deoplete in neovim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" if !has( "nvim" )
-" let g:ycm_enable_diagnostic_signs = 0
-" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" let g:ycm_server_python_interpreter = '/usr/bin/python'
-" let g:ycm_python_binary_path = '/usr/bin/python'
-" endif
-
 " > Completor.vim
 " deoplete in neovim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has("nvim")
   let g:completor_python_binary = '/usr/bin/python'
-  let g:completor_python_binary = '/usr/bin/clang'
+  let g:completor_clang_binary = '/usr/bin/clang'
 endif
 
 " > VimCompletesMe
@@ -156,17 +142,18 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has( "nvim" )
 let g:deoplete#enable_at_startup = 1 
+let g:deoplete#enable_refresh_always = 1
+
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++14', 'objc': 'c11', 'objcpp': 'c++1z'}
-let g:deoplete#enable_refresh_always = 0
+
+" debugging mode
+" let g:deoplete#enable_profile = 1
+" call deoplete#enable_logging('DEBUG', 'deoplete.log')
+" call deoplete#custom#set('jedi', 'debug_enabled', 1)
 
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 endif
-
-" > ALE
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
