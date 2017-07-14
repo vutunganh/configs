@@ -143,8 +143,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 2%- unmu
 bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightness
 
 # Reverse scrolling
 exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -107, -107
