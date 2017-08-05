@@ -21,6 +21,9 @@ if !has("nvim")
   Plug 'maralla/completor.vim'
 endif
 
+" Latex
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 " > Behaviour
