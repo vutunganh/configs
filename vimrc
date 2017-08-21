@@ -7,15 +7,15 @@ Plug 'jacoborus/tender'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-unimpaired'
-Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-repeat'
+Plug 'Raimondi/delimitMate'
+Plug 'tommcdo/vim-lion'
 " Autocompletion 
 if has("nvim")
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neoinclude.vim'
-  Plug 'zchee/deoplete-clang', { 'for': 'cpp' }
+  Plug 'zchee/deoplete-clang', { 'for': [ 'cpp', 'c' ] }
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 endif
 
@@ -24,7 +24,7 @@ if !has("nvim")
 endif
 
 " Latex
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for' : [ 'tex', 'latex' ] }
 
 call plug#end()
 
@@ -162,3 +162,8 @@ if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 endif
+
+" > Surround
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType cpp let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
+autocmd FileType c let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
