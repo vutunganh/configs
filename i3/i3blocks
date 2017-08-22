@@ -103,7 +103,7 @@ interval=5
 [battery]
 # label=BAT
 label=⚡
-instance=1
+# instance=1
 interval=120
 
 # Date Time
