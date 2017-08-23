@@ -82,9 +82,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
-" moving around buffers
-map <leader>l :bnext!<cr>
-map <leader>h :bprevious!<cr>
 " close buffer
 map <leader>bd :bdelete<cr>
 map <leader>tn :tabnew<cr>
