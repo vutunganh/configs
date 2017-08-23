@@ -29,56 +29,49 @@ Plug 'lervag/vimtex', { 'for' : [ 'tex', 'latex' ] }
 call plug#end()
 
 " > Behaviour
-""""""""""""""""""""""""""""""""""""""""
-" lines above/below cursor
-set scrolloff=5
-" ignore case when searching
-set ignorecase
-" cooperate with ignorecase
-set smartcase
-set hidden
-set showmatch
-set incsearch
-set hlsearch
-set lazyredraw
-set mat=2
-set mouse=a
-set noeb
-set vb
-set t_vb=
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set scrolloff=5 " lines above/below cursor
+set ignorecase  " ignore case when searching
+set smartcase   " cooperate with ignorecase
+set hidden      " switch buffers without having to save the file being left
+set incsearch   " incrementally shows searched pattern
+set hlsearch    " highlights search results
+set lazyredraw  " ??
+set mouse=a     " mouse in terminal??
+set noeb        " no error bell
+set vb          " visual bell
+set t_vb=       " neovim terminal visual bell
 
 
 " > Editing
-""""""""""""""""""""""""""""""""""""""""
-set wildmenu
-set wildmode=full
-set expandtab
-set smarttab
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildmenu      " better command line completion
+set wildmode=full " same as above
+set expandtab     " tab insert spaces
+set smarttab      " bs deletes a bunch of spaces like a tab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set cindent
 set cinkeys-=0#
 set indentkeys-=0#
-set wrap "Wrap lines
+set wrap          " wrap lines
 map <leader>pp :setlocal paste!<cr>
 
 
 " > UI
-""""""""""""""""""""""""""""""""""""""""
-syntax enable
-set background=dark
-set t_Co=256
-set t_ut=
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable             " enables syntax highlighting
+set background=dark 
+set t_Co=256              " ??
+set t_ut=                 " ??
 colorscheme tender
-set foldcolumn=0
-set number
 set relativenumber
-set cursorline
-set showcmd
-set laststatus=2
-set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L
-let g:bufferline_echo = 1
+set cursorline            "highlights the line
+set showcmd               "shows currently entered command
+set laststatus=2          " all windows have status lines
+set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
+let g:bufferline_echo = 1 "bufferline plugin
 
 if has('gui_running')
   set guifont=Monospace\ 12
@@ -86,8 +79,7 @@ endif
 
 
 " > Keybindings
-""""""""""""""""""""""""""""""""""""""""
-" leader key
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 " moving around buffers
@@ -95,34 +87,31 @@ map <leader>l :bnext!<cr>
 map <leader>h :bprevious!<cr>
 " close buffer
 map <leader>bd :bdelete<cr>
-" tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
-" Remember info about open buffers on close
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" 0 moves to the beginning of line
+" Remember info about open buffers on close
 map 0 ^
+" 0 moves to the beginning of line
 nnoremap <leader><CR> :nohlsearch<CR>
-
 nnoremap <F5> :make<CR>
-
 cmap w!! !sudo tee % > /dev/null
 
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " > C++
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Don't indent access specifiers (public, private,...)
 set cinoptions+=g0
 set cinoptions+=N-s
 
 " > Completor.vim
 " deoplete in neovim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has("nvim")
   let g:completor_python_binary = '/usr/bin/python'
   let g:completor_clang_binary = '/usr/bin/clang'
@@ -144,7 +133,7 @@ endif
 
 
 " > Deoplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has( "nvim" )
 let g:deoplete#enable_at_startup = 1 
 let g:deoplete#enable_refresh_always = 1
@@ -164,6 +153,6 @@ endif
 endif
 
 " > Surround
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType cpp let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
 autocmd FileType c let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
