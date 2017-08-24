@@ -1,5 +1,8 @@
 call plug#begin()
 
+" Packages
+Plug 'sheerun/vim-polyglot'
+Plug 'flazz/vim-colorschemes'
 " Bufferline
 Plug 'bling/vim-bufferline'
 " Colorscheme
@@ -122,6 +125,7 @@ let g:deoplete#enable_refresh_always = 1
 
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
+let g:deoplete#sources#clang#executable ="/usr/bin/clang-4.0"
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++14', 'objc': 'c11', 'objcpp': 'c++1z'}
 
 " debugging mode
