@@ -138,9 +138,10 @@ bar {
 }
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 2%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 2%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks 
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1
+
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
@@ -152,7 +153,6 @@ exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrol
 # Autostart
 exec --no-startup-id redshift
 exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
-# exec --no-startup-id polybar --reload arch
 
 # Screenshoting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
