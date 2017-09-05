@@ -68,9 +68,8 @@ syntax enable             " enables syntax highlighting
 set background=dark 
 set t_Co=256              " ??
 set t_ut=                 " ??
-colorscheme tender
+colorscheme Black
 set relativenumber
-set cursorline            "highlights the line
 set showcmd               "shows currently entered command
 set laststatus=2          " all windows have status lines
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
