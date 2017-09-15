@@ -15,14 +15,14 @@ Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
 " Autocompletion 
-if has("nvim")
+if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neoinclude.vim'
   Plug 'zchee/deoplete-clang', { 'for': [ 'cpp', 'c' ] }
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 endif
 
-if !has("nvim")
+if !has('nvim')
   Plug 'maralla/completor.vim'
 endif
 
@@ -91,8 +91,8 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext 
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Remember info about open buffers on close
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 map 0 ^
 " 0 moves to the beginning of line
 nnoremap <leader><CR> :nohlsearch<CR>
@@ -111,20 +111,20 @@ set cinoptions+=N-s
 " > Completor.vim
 " deoplete in neovim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has("nvim")
+if !has('nvim')
   let g:completor_python_binary = '/usr/bin/python'
   let g:completor_clang_binary = '/usr/bin/clang'
 endif
 
 " > Deoplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has( "nvim" )
+if has( 'nvim' )
 let g:deoplete#enable_at_startup = 1 
 let g:deoplete#enable_refresh_always = 1
 
 let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header ="/usr/lib/clang"
-let g:deoplete#sources#clang#executable ="/usr/bin/clang-4.0"
+let g:deoplete#sources#clang#clang_header ='/usr/lib/clang'
+let g:deoplete#sources#clang#executable ='/usr/bin/clang-4.0'
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++14', 'objc': 'c11', 'objcpp': 'c++1z'}
 
 " debugging mode
