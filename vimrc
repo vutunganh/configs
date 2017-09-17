@@ -52,7 +52,7 @@ set wildmenu      " better command line completion
 set wildmode=full " same as above
 set expandtab     " tab insert spaces
 set smarttab      " bs deletes a bunch of spaces like a tab
-set tabstop=2
+" set tabstop=2   " can't touch this
 set shiftwidth=2
 set softtabstop=2
 set cindent
