@@ -64,7 +64,9 @@ map <leader>pp :setlocal paste!<cr>
 
 " > UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable             " enables syntax highlighting
+if !exists("g:syntax_on")
+  syntax enable             " enables syntax highlighting
+endif
 set background=dark 
 set t_Co=256              " ??
 set t_ut=                 " ??
