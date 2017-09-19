@@ -142,7 +142,6 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1
 
-
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightness
@@ -153,10 +152,12 @@ exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrol
 # Autostart
 exec --no-startup-id redshift
 exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
+exec --no-startup-id thunderbird
+exec --no-startup-id nm-applet
+exec --no-startup-id system-config-printer-applet
 
 # Screenshoting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
 bindsym --release Shift+Print exec --no-startup-id "maim -s ~/pictures/screenshot_$(date +%s).png"
 bindsym --release Control+Print exec --no-startup-id "maim | xclip -selection clipboard -t image/png"
 bindsym --release Control+Shift+Print exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png"
-
