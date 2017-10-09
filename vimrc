@@ -39,11 +39,10 @@ set smartcase   " cooperate with ignorecase
 set hidden      " switch buffers without having to save the file being left
 set incsearch   " incrementally shows searched pattern
 set hlsearch    " highlights search results
-set lazyredraw  " ??
+set lazyredraw  " doesn't redraw screen when typing commands
 set mouse=a     " mouse in terminal??
 set noeb        " no error bell
 set vb          " visual bell
-set t_vb=       " neovim terminal visual bell
 
 
 " > Editing
@@ -65,14 +64,12 @@ map <leader>pp :setlocal paste!<cr>
 " > UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists("g:syntax_on")
-  syntax enable             " enables syntax highlighting
+  syntax enable           " enables syntax highlighting
 endif
 set background=dark 
-set t_Co=256              " ??
-set t_ut=                 " ??
 colorscheme Black
 set relativenumber
-set showcmd               "shows currently entered command
+set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
 let g:bufferline_echo = 1 "bufferline plugin
@@ -128,6 +125,8 @@ let g:deoplete#sources#clang#libclang_path='/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header ='/usr/lib/clang'
 let g:deoplete#sources#clang#executable ='/usr/bin/clang-4.0'
 let g:deoplete#sources#clang#std={'c': 'c99', 'cpp': 'c++14', 'objc': 'c11', 'objcpp': 'c++1z'}
+
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " debugging mode
 " let g:deoplete#enable_profile = 1
