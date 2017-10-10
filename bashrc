@@ -8,6 +8,7 @@ alias cformat='indent -bad -bap -bbb -nbbo -nbc -bl -blf -bli0 \
 -nsai -nsaw -sbi0 -sc -nsob -nss -nut'
 alias py2='python2'
 alias py='python'
+alias ..='cd ..'
 
 export TERM=xterm-256color
 

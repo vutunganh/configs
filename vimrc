@@ -21,15 +21,11 @@ if has('nvim')
   Plug 'zchee/deoplete-clang', { 'for': [ 'cpp', 'c' ] }
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 endif
-
-if !has('nvim')
-  Plug 'maralla/completor.vim'
-endif
-
 " Latex
 Plug 'lervag/vimtex', { 'for' : [ 'tex', 'latex' ] }
 
 call plug#end()
+
 
 " > Behaviour
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -43,6 +39,7 @@ set lazyredraw  " doesn't redraw screen when typing commands
 set mouse=a     " mouse in terminal??
 set noeb        " no error bell
 set vb          " visual bell
+set t_vb=       " don't flash when scrolling past first/last line
 
 
 " > Editing
@@ -101,19 +98,13 @@ cmap w!! !sudo tee % > /dev/null
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
+
 " > C++
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Don't indent access specifiers (public, private,...)
 set cinoptions+=g0
 set cinoptions+=N-s
 
-" > Completor.vim
-" deoplete in neovim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has('nvim')
-  let g:completor_python_binary = '/usr/bin/python'
-  let g:completor_clang_binary = '/usr/bin/clang'
-endif
 
 " > Deoplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,15 +129,18 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 endif
 
+
 " > Latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_flavor = "latex"
 autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
+
 " > Surround
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType cpp let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
 autocmd FileType c let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
+
 
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
