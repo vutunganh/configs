@@ -156,6 +156,9 @@ exec --no-startup-id thunderbird
 exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 
+# Lock after delay
+exec --no-startup-id xautolock -time 15 -locker i3lock &
+
 # Screenshoting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
 bindsym --release Shift+Print exec --no-startup-id "maim -s ~/pictures/screenshot_$(date +%s).png"
