@@ -2,11 +2,11 @@ call plug#begin()
 
 " Packages
 Plug 'sheerun/vim-polyglot'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
 " Bufferline
 Plug 'bling/vim-bufferline'
 " Colorscheme
-Plug 'jacoborus/tender'
+" Plug 'jacoborus/tender'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -64,7 +64,7 @@ if !exists("g:syntax_on")
   syntax enable           " enables syntax highlighting
 endif
 set background=dark 
-colorscheme Black
+colorscheme elflord
 set relativenumber
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
@@ -93,6 +93,7 @@ map 0 ^
 " 0 moves to the beginning of line
 nnoremap <leader><CR> :nohlsearch<CR>
 nnoremap <F5> :make<CR>
+nnoremap <F6> :make all<CR>
 cmap w!! !sudo tee % > /dev/null
 
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
