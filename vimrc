@@ -34,7 +34,6 @@ set ignorecase  " ignore case when searching
 set smartcase   " cooperate with ignorecase
 set hidden      " switch buffers without having to save the file being left
 set incsearch   " incrementally shows searched pattern
-set hlsearch    " highlights search results
 set lazyredraw  " doesn't redraw screen when typing commands
 set mouse=a     " mouse in terminal??
 set noeb        " no error bell
@@ -91,7 +90,6 @@ map <leader>t<leader> :tabnext
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 map 0 ^
 " 0 moves to the beginning of line
-nnoremap <leader><CR> :nohlsearch<CR>
 nnoremap <F5> :make<CR>
 nnoremap <F6> :make all<CR>
 cmap w!! !sudo tee % > /dev/null
