@@ -12,7 +12,7 @@ alias ..='cd ..'
 
 export TERM=xterm-256color
 
-PS1='\u@\h \w \$ '
+PS1='\u@\h \w\n\$ '
 
 if [ $( type -P 'nvim' ) ]; then
   alias vim='nvim'
