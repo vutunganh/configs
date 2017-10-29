@@ -63,7 +63,7 @@ if !exists("g:syntax_on")
 endif
 set background=dark 
 colorscheme elflord
-set relativenumber
+set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
