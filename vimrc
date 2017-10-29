@@ -48,13 +48,12 @@ set wildmode=full " same as above
 set expandtab     " tab insert spaces
 set smarttab      " bs deletes a bunch of spaces like a tab
 " set tabstop=2   " can't touch this
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=2  " '``tab'' size
+set softtabstop=2 " '``tab'' size
 set cindent
 set cinkeys-=0#
 set indentkeys-=0#
 set wrap          " wrap lines
-map <leader>pp :setlocal paste!<cr>
 
 
 " > UI
