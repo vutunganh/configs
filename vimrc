@@ -72,6 +72,7 @@ let g:bufferline_echo = 1 "bufferline plugin
 if has('gui_running')
   set guifont=Monospace\ 12
 endif
+set nohlsearch
 
 
 " > Keybindings
