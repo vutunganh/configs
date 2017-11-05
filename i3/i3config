@@ -30,7 +30,7 @@ font pango:Roboto regular 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec qterminal
+bindsym $mod+Return exec sakura
 
 # kill focused window
 bindsym $mod+q kill
