@@ -138,10 +138,6 @@ bar {
         status_command i3blocks
 }
 
-bar {
-        output HDMI-0
-        status_command i3blocks
-}
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks 
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
