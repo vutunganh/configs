@@ -9,6 +9,9 @@ alias cformat='indent -bad -bap -bbb -nbbo -nbc -bl -blf -bli0 \
 alias py2='python2'
 alias py='python'
 alias ..='cd ..'
+function mkcd {
+  mkdir "$1" && cd "$1"
+}
 
 export TERM=xterm-256color
 
