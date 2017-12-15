@@ -2,11 +2,8 @@ call plug#begin()
 
 " Packages
 Plug 'sheerun/vim-polyglot'
-" Plug 'flazz/vim-colorschemes'
 " Bufferline
 Plug 'bling/vim-bufferline'
-" Colorscheme
-" Plug 'jacoborus/tender'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -20,6 +17,8 @@ if has('nvim')
   Plug 'Shougo/neoinclude.vim'
   Plug 'zchee/deoplete-clang', { 'for': [ 'cpp', 'c' ] }
   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+  Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': ['./install.sh',':UpdateRemotePlugins']}
+  Plug 'JuliaEditorSupport/LanguageServer.jl'
 endif
 " Latex
 Plug 'lervag/vimtex', { 'for' : [ 'tex', 'latex' ] }
@@ -146,3 +145,19 @@ autocmd FileType c let g:surround_{char2nr("d")} = "#ifdef DEBUG\n\r\n#endif"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType c setlocal commentstring=//\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
+
+" > Julia
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:default_julia_version = '0.6'
+
+" > LanguageClient
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+\   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+\       using LanguageServer;
+\       server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
+\       server.runlinter = true;
+\       run(server);
+\   '],
+\ }
