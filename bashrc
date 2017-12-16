@@ -12,10 +12,15 @@ alias ..='cd ..'
 function mkcd {
   mkdir "$1" && cd "$1"
 }
+source /usr/share/git/completion/git-prompt.sh
 
 export TERM=xterm-256color
 
-PS1='\u@\h \w\n\$ '
+PS1='\u@\h \w $(__git_ps1 "(%s)")\n\$ '
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=1
 
 if [ $( type -P 'nvim' ) ]; then
   alias vim='nvim'
