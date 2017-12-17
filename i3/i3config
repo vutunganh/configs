@@ -143,11 +143,8 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -R
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 4 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 4 # decrease screen brightness
-
-# Reverse scrolling
-# exec --no-startup-id xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -107, -107
+bindsym XF86MonBrightnessUp exec xbacklight -inc 3 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightness
 
 # Autostart
 exec xset 300 300
@@ -159,10 +156,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id pasystray
 exec --no-startup-id dropbox
-
-# Lock after delay
-# exec --no-startup-id xautolock -time 15 -locker i3lock &
-# exec --no-startup-id xautolock -time 20 -locker "systemctl hibernate" &
 
 # Screenshoting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
