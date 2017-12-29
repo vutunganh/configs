@@ -1,6 +1,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+shopt -s histappend
+shopt -s cmdhist
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTCONTROL=ignoreboth:erasedups
+HISTIGNORE='ls:bg:fg:cd'
+
 alias ls='ls --color=auto'
 alias cformat='indent -bad -bap -bbb -nbbo -nbc -bl -blf -bli0 \
 -bls -cbi0 -cdb -ncdw -nce -ci2 -cli2 -ncs -nbfda -nbfde -hnl \
