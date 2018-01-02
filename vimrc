@@ -15,7 +15,8 @@ Plug 'tommcdo/vim-lion'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   Plug 'Shougo/neoinclude.vim'
-  Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
+  " Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
+  Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
   Plug 'zchee/deoplete-jedi', {'for': 'python'}
   Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
   Plug 'JuliaEditorSupport/LanguageServer.jl', {'for': 'julia'}
@@ -40,6 +41,8 @@ set mouse=a     " mouse in terminal??
 set noeb        " no error bell
 set vb          " visual bell
 set t_vb=       " don't flash when scrolling past first/last line
+set nobackup    " no backups at all
+set noswapfile
 
 
 " > Editing
@@ -109,32 +112,33 @@ set cinoptions+=N-s
 " > Deoplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
-let g:deoplete#enable_at_startup = 1 
-let g:deoplete#enable_refresh_always = 1
+  let g:deoplete#enable_at_startup = 1 
+  let g:deoplete#enable_refresh_always = 1
 
-" C/C++
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/'
-let g:deoplete#sources#clang#executable = '/usr/bin/clang'
-let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14', 'objc': 'c11', 'objcpp': 'c++1z'}
+  " C/C++
+  " let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+  " let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+  let g:deoplete#sources#clang#executable = '/usr/bin/clang-5.0'
+  let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
+  let g:deoplete#sources#clang#flags = ['-Wall', '-pedantic']
 
-" Python
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#enable_cache = 1
+  " Python
+  let g:deoplete#sources#jedi#show_docstring = 1
+  let g:deoplete#sources#jedi#enable_cache = 1
 
-" Tex
-augroup vimtex
-  autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-augroup END
+  " Tex
+  augroup vimtex
+    autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+  augroup END
 
-" debugging mode
-" let g:deoplete#enable_profile = 1
-" call deoplete#enable_logging('DEBUG', 'deoplete.log')
-" call deoplete#custom#set('jedi', 'debug_enabled', 1)
+  " debugging mode
+  " let g:deoplete#enable_profile = 1
+  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
+  " call deoplete#custom#set('jedi', 'debug_enabled', 1)
 
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+  if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+  endif
 endif
 
 
@@ -161,10 +165,10 @@ let g:default_julia_version = '0.6'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-\   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
-\       using LanguageServer;
-\       server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
-\       server.runlinter = true;
-\       run(server);
-\   ']
-\ }
+      \   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+      \       using LanguageServer;
+      \       server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
+      \       server.runlinter = true;
+      \       run(server);
+      \   ']
+      \ }
