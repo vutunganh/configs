@@ -13,11 +13,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
 " Autocompletion 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  Plug 'roxma/nvim-completion-manager'
   Plug 'Shougo/neoinclude.vim'
-  " Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
-  Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
-  Plug 'zchee/deoplete-jedi', {'for': 'python'}
+  " Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
+  " Plug 'zchee/deoplete-jedi', {'for': 'python'}
   Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
   Plug 'JuliaEditorSupport/LanguageServer.jl', {'for': 'julia'}
 endif
@@ -47,17 +47,17 @@ set noswapfile
 
 " > Editing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildmenu      " better command line completion
-set wildmode=full " same as above
-set expandtab     " tab insert spaces
-set smarttab      " bs deletes a bunch of spaces like a tab
-" set tabstop=2   " can't touch this
-set shiftwidth=2  " tab size when indenting
-set softtabstop=2 " ``tab'' size
+set wildmenu       " better command line completion
+set wildmode=full  " same as above
+set expandtab      " tab insert spaces
+set smarttab       " bs deletes a bunch of spaces like a tab
+                   " set tabstop=2   " can't touch this
+set shiftwidth=2   " tab size when indenting
+set softtabstop=2  " ``tab'' size
 set cindent
-set cinkeys-=0#
-set indentkeys-=0#
-set wrap          " wrap lines
+set cinkeys-=0#    " don't indent preprocessor directives
+set indentkeys-=0# " same as above
+set wrap           " wrap lines
 
 
 " > UI
@@ -92,8 +92,8 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext 
 " Remember info about open buffers on close
 " autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-map 0 ^
-" 0 moves to the beginning of line
+" 0 moves to the beginning of the line
+noremap 0 ^
 nnoremap <F5> :make<CR>
 nnoremap <F6> :make all<CR>
 cmap w!! !sudo tee % > /dev/null 
@@ -104,9 +104,8 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " > C++
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Don't indent access specifiers (public, private,...)
-set cinoptions+=g0
-set cinoptions+=N-s
+set cinoptions+=g0  " don't indent access specifiers (public, private,...)
+set cinoptions+=N-s " don't indent elements in namespaces
 
 
 " > Deoplete
@@ -142,6 +141,13 @@ if has('nvim')
 endif
 
 
+" > nvim-completion-manager
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log"
+let $NVIM_NCM_LOG_LEVEL="DEBUG"
+let $NVIM_NCM_MULTI_THREAD=0
+
+
 " > Latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_flavor = "latex"
@@ -172,3 +178,4 @@ let g:LanguageClient_serverCommands = {
       \       run(server);
       \   ']
       \ }
+let g:LanguageClient_loggingLevel = 'DEBUG'
