@@ -13,11 +13,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
 " Autocompletion 
 if has('nvim')
-  " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   Plug 'roxma/nvim-completion-manager'
   Plug 'Shougo/neoinclude.vim'
-  " Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
-  " Plug 'zchee/deoplete-jedi', {'for': 'python'}
   Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
   Plug 'JuliaEditorSupport/LanguageServer.jl', {'for': 'julia'}
 endif
@@ -51,7 +48,7 @@ set wildmenu       " better command line completion
 set wildmode=full  " same as above
 set expandtab      " tab insert spaces
 set smarttab       " bs deletes a bunch of spaces like a tab
-                   " set tabstop=2   " can't touch this
+" set tabstop=2    " can't touch this
 set shiftwidth=2   " tab size when indenting
 set softtabstop=2  " ``tab'' size
 set cindent
@@ -71,7 +68,8 @@ set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
-let g:bufferline_echo = 1 "bufferline plugin
+let g:bufferline_echo = 1 " bufferline plugin
+set shortmess+=c          " nvim completion manager
 
 if has('gui_running')
   set guifont=Monospace\ 12
@@ -85,60 +83,19 @@ let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
 " close buffer
 map <leader>bd :bdelete<cr>
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
-" Remember info about open buffers on close
-" autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-" 0 moves to the beginning of the line
 noremap 0 ^
 nnoremap <F5> :make<CR>
 nnoremap <F6> :make all<CR>
 cmap w!! !sudo tee % > /dev/null 
 " tab expands completion
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 
 " > C++
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cinoptions+=g0  " don't indent access specifiers (public, private,...)
 set cinoptions+=N-s " don't indent elements in namespaces
-
-
-" > Deoplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  let g:deoplete#enable_at_startup = 1 
-  let g:deoplete#enable_refresh_always = 1
-
-  " C/C++
-  " let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-  " let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
-  let g:deoplete#sources#clang#executable = '/usr/bin/clang-5.0'
-  let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
-  let g:deoplete#sources#clang#flags = ['-Wall', '-pedantic']
-
-  " Python
-  let g:deoplete#sources#jedi#show_docstring = 1
-  let g:deoplete#sources#jedi#enable_cache = 1
-
-  " Tex
-  augroup vimtex
-    autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-  augroup END
-
-  " debugging mode
-  " let g:deoplete#enable_profile = 1
-  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
-  " call deoplete#custom#set('jedi', 'debug_enabled', 1)
-
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-  endif
-endif
 
 
 " > nvim-completion-manager
