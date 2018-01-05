@@ -15,11 +15,9 @@ Plug 'tommcdo/vim-lion'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   Plug 'Shougo/neoinclude.vim'
-  " Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
   Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
   Plug 'zchee/deoplete-jedi', {'for': 'python'}
-  Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
-  Plug 'JuliaEditorSupport/LanguageServer.jl', {'for': 'julia'}
+  Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl', 'do': ':UpdateRemotePlugins'}
 endif
 " Latex
 Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
