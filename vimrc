@@ -15,8 +15,7 @@ Plug 'tommcdo/vim-lion'
 if has('nvim')
   Plug 'roxma/nvim-completion-manager'
   Plug 'Shougo/neoinclude.vim'
-  Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl'}
-  Plug 'JuliaEditorSupport/LanguageServer.jl', {'for': 'julia'}
+  Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl', 'do': ':UpdateRemotePlugins'}
 endif
 " Latex
 Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
