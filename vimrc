@@ -97,10 +97,11 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " > C++
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Don't indent access specifiers (public, private,...)
+" don't indent preprocessor directives
 set cindent
 set cinkeys-=0#
 set indentkeys-=0#
+" Don't indent access specifiers (public, private,...)
 set cinoptions+=g0
 set cinoptions+=N-s
 
