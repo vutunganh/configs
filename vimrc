@@ -17,7 +17,6 @@ if has('nvim')
   Plug 'Shougo/neoinclude.vim'
   Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
   Plug 'zchee/deoplete-jedi', {'for': 'python'}
-  Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-unknown-linux-musl', 'do': ':UpdateRemotePlugins'}
 endif
 " Latex
 Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
