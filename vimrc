@@ -51,9 +51,6 @@ set smarttab      " bs deletes a bunch of spaces like a tab
 " set tabstop=2   " can't touch this
 set shiftwidth=2  " tab size when indenting
 set softtabstop=2 " ``tab'' size
-set cindent
-set cinkeys-=0#
-set indentkeys-=0#
 set wrap          " wrap lines
 
 
@@ -68,12 +65,11 @@ set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
-let g:bufferline_echo = 1 "bufferline plugin
+set nohlsearch
 
 if has('gui_running')
   set guifont=Monospace\ 12
 endif
-set nohlsearch
 
 
 " > Keybindings
@@ -89,7 +85,7 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext 
 " Remember info about open buffers on close
 " autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-map 0 ^
+nnoremap 0 ^
 " 0 moves to the beginning of line
 nnoremap <F5> :make<CR>
 nnoremap <F6> :make all<CR>
@@ -102,8 +98,16 @@ inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 " > C++
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Don't indent access specifiers (public, private,...)
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 set cinoptions+=g0
 set cinoptions+=N-s
+
+
+" > Bufferline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:bufferline_echo = 1 "bufferline plugin
 
 
 " > Deoplete
@@ -113,8 +117,6 @@ if has('nvim')
   let g:deoplete#enable_refresh_always = 1
 
   " C/C++
-  " let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-  " let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
   let g:deoplete#sources#clang#executable = '/usr/bin/clang-5.0'
   let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
   let g:deoplete#sources#clang#flags = ['-Wall', '-pedantic']
@@ -158,14 +160,3 @@ augroup END
 let g:default_julia_version = '0.6'
 
 
-" > LanguageClient
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-      \   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
-      \       using LanguageServer;
-      \       server = LanguageServer.LanguageServerInstance(STDIN, STDOUT, false);
-      \       server.runlinter = true;
-      \       run(server);
-      \   ']
-      \ }
