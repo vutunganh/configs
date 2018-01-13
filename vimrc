@@ -40,6 +40,13 @@ set vb          " visual bell
 set t_vb=       " don't flash when scrolling past first/last line
 set nobackup    " no backups at all
 set noswapfile
+" remember cursor position when reopening a file
+if has("autocmd")
+  autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \ execute "normal! g'\"" |
+        \ endif
+endif
 
 
 " > Editing
@@ -76,15 +83,6 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = "\<Space>"
 let g:mapleader = "\<Space>"
-" close buffer
-map <leader>bd :bdelete<cr>
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
-" Remember info about open buffers on close
-" autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 nnoremap 0 ^
 " 0 moves to the beginning of line
 nnoremap <F5> :make<CR>
