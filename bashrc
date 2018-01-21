@@ -29,6 +29,8 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=1
 
+export EDITOR=vim
+
 if [ $( type -P 'nvim' ) ]; then
   alias vim='nvim'
 fi
