@@ -142,7 +142,7 @@ endif
 
 " > Latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor = "latex"
+let g:tex_flavor = 'plaintex'
 let g:polyglot_disabled = ['latex']
 
 
