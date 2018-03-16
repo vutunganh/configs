@@ -9,10 +9,10 @@ HISTCONTROL=ignoreboth:erasedups
 HISTIGNORE='ls:bg:fg:cd'
 
 alias ls='ls --color=auto'
-alias cformat='indent -bad -bap -bbb -nbbo -nbc -bl -blf -bli0 \
--bls -cbi0 -cdb -ncdw -nce -ci2 -cli2 -ncs -nbfda -nbfde -hnl \
--i2 -ip2 -l80 -lp -nlps -npcs -pi2 -pmt -ppi0 -prs -npsl -nsaf \
--nsai -nsaw -sbi0 -sc -nsob -nss -nut'
+alias cformat='indent -bad -bap -bbb -nbbo -nbc -br -brf -bli0 \
+-brs -cbi0 -cdb -cdw -ce -ci2 -cli2 -ncs -nbfda -nbfde -nhnl \
+-i2 -ip2 -l80 -lc80 -lp -nlps -npcs -pi2 -pmt -ppi0 -nprs -npsl -saf \
+-sai -saw -sbi0 -sc -nsob -nss -nut'
 alias py2='python2'
 alias py='python'
 alias ..='cd ..'
@@ -42,7 +42,7 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null 2>&1 || ssh-add > /dev/null 2>&1
 
 for f in ~/.ssh/*; do
-  if [[ "$f" != *.pub && "$f" != 'known_hosts' ]]; then
+  if [[ "$f" != *.pub && "$f" != 'known_hosts' && "$f" != 'config' ]]; then
     ssh-add "$f" > /dev/null 2>&1
   fi
 done
