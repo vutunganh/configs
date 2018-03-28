@@ -148,7 +148,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightnes
 
 # Autostart
 exec xset -dpms
-exec "light-locker --lock-after-screensaver=0 &"
 exec redshift-gtk
 exec "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
 exec --no-startup-id thunderbird
