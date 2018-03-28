@@ -12,11 +12,14 @@ Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
 " Autocompletion 
+Plug 'sirver/UltiSnips'
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  Plug 'roxma/nvim-completion-manager'
   Plug 'Shougo/neoinclude.vim'
-  Plug 'tweekmonster/deoplete-clang2', {'for': ['cpp', 'c']}
-  Plug 'zchee/deoplete-jedi', {'for': 'python'}
+  Plug 'roxma/ncm-clang', {'for': ['cpp', 'c']}
+  " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  " Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
+  " Plug 'zchee/deoplete-jedi', {'for': 'python'}
 endif
 " Latex
 Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
@@ -109,35 +112,43 @@ set cinoptions+=N-s
 let g:bufferline_echo = 1 "bufferline plugin
 
 
+" > nvim-completion-manager
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log"
+" let $NVIM_NCM_LOG_LEVEL="DEBUG"
+" let $NVIM_NCM_MULTI_THREAD=0
+
+
 " > Deoplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-  let g:deoplete#enable_at_startup = 1 
-  let g:deoplete#enable_refresh_always = 1
+"if has('nvim')
+"  let g:deoplete#enable_at_startup = 1 
+"  let g:deoplete#enable_refresh_always = 1
 
-  " C/C++
-  let g:deoplete#sources#clang#executable = '/usr/bin/clang-5.0'
-  let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
-  let g:deoplete#sources#clang#flags = ['-Wall', '-pedantic']
+"  " C/C++
+"  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+"  let g:deoplete#sources#clang#executable = '/usr/lib/clang/6.0.0/include'
+"  let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
+"  let g:deoplete#sources#clang#flags = ['-Wall', '-pedantic']
 
-  " Python
-  let g:deoplete#sources#jedi#show_docstring = 1
-  let g:deoplete#sources#jedi#enable_cache = 1
+"  " Python
+"  let g:deoplete#sources#jedi#show_docstring = 1
+"  let g:deoplete#sources#jedi#enable_cache = 1
 
-  " Tex
-  augroup vimtex
-    autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-  augroup END
+"  " Tex
+"  augroup vimtex
+"    autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+"  augroup END
 
-  " debugging mode
-  " let g:deoplete#enable_profile = 1
-  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
-  " call deoplete#custom#set('jedi', 'debug_enabled', 1)
+"  " debugging mode
+"  " let g:deoplete#enable_profile = 1
+"  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
+"  " call deoplete#custom#set('jedi', 'debug_enabled', 1)
 
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-  endif
-endif
+"  if !exists('g:deoplete#omni#input_patterns')
+"    let g:deoplete#omni#input_patterns = {}
+"  endif
+"endif
 
 
 " > Latex
