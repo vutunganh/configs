@@ -76,6 +76,7 @@ set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
 set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
 set nohlsearch
+hi Folded ctermbg=black
 
 if has('gui_running')
   set guifont=Monospace\ 12
