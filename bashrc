@@ -9,16 +9,14 @@ HISTCONTROL=ignoreboth:erasedups
 HISTIGNORE='ls:bg:fg:cd'
 
 alias ls='ls --color=auto'
-alias cformat='indent -bad -bap -bbb -nbbo -nbc -br -brf -bli0 \
--brs -cbi0 -cdb -cdw -ce -ci2 -cli2 -ncs -nbfda -nbfde -nhnl \
--i2 -ip2 -l80 -lc80 -lp -nlps -npcs -pi2 -pmt -ppi0 -nprs -npsl -saf \
--sai -saw -sbi0 -sc -nsob -nss -nut'
 alias py2='python2'
 alias py='python'
 alias ..='cd ..'
+
 function mkcd {
   mkdir "$1" && cd "$1"
 }
+
 source /usr/share/git/completion/git-prompt.sh
 
 export TERM=xterm-256color
