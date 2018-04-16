@@ -85,8 +85,8 @@ endif
 
 " > Keybindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = "\<Space>"
-let g:mapleader = "\<Space>"
+let mapleader = "<Space>"
+let g:mapleader = "<Space>"
 nnoremap 0 ^
 " 0 moves to the beginning of line
 nnoremap <F5> :make<CR>
@@ -154,7 +154,7 @@ let g:bufferline_echo = 1 "bufferline plugin
 
 " > Latex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor = 'plaintex'
+let g:tex_flavor = 'latex'
 let g:polyglot_disabled = ['latex']
 
 
