@@ -20,15 +20,14 @@ AlwaysBreakTemplateDeclarations: true
 BinPackArguments: true
 BinPackParameters: false
 BraceWrapping:   
-  AfterClass:      false
+  AfterClass:      true
   AfterControlStatement: false
   AfterEnum:       false
-  AfterFunction:   false
-  AfterNamespace:  false
-  AfterObjCDeclaration: false
-  AfterStruct:     false
+  AfterFunction:   true
+  AfterNamespace:  true
+  AfterStruct:     true
   AfterUnion:      false
-  AfterExternBlock: false
+  AfterExternBlock: true
   BeforeCatch:     false
   BeforeElse:      false
   IndentBraces:    false
@@ -36,7 +35,7 @@ BraceWrapping:
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
 BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Custom
 BreakBeforeInheritanceComma: false
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: BeforeComma
@@ -72,7 +71,6 @@ IndentPPDirectives: None
 IndentWidth:     2
 IndentWrappedFunctionNames: false
 KeepEmptyLinesAtTheStartOfBlocks: false
-LanguageKind: Cpp
 MacroBlockBegin: ''
 MacroBlockEnd:   ''
 MaxEmptyLinesToKeep: 1
@@ -96,7 +94,6 @@ SpaceAfterCStyleCast: false
 SpaceAfterTemplateKeyword: true
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
-SpaceBeforeRangeBasedForLoopColon: true
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
 SpacesInAngles:  false
