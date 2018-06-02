@@ -12,14 +12,11 @@ Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
 " Autocompletion 
-Plug 'sirver/UltiSnips'
 if has('nvim')
-  Plug 'roxma/nvim-completion-manager'
+  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   Plug 'Shougo/neoinclude.vim'
-  Plug 'roxma/ncm-clang', {'for': ['cpp', 'c']}
-  " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-  " Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
-  " Plug 'zchee/deoplete-jedi', {'for': 'python'}
+  Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
+  Plug 'zchee/deoplete-jedi', {'for': 'python'}
 endif
 " Latex
 Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
@@ -64,6 +61,11 @@ set softtabstop=2 " ``tab'' size
 set wrap          " wrap lines
 
 
+" > Spell check
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spelllang+=cs
+
+
 " > UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists("g:syntax_on")
@@ -74,7 +76,7 @@ colorscheme elflord
 set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
-set statusline=\ %F%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
+set statusline=\ %f%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
 set nohlsearch
 hi Folded ctermbg=black
 
@@ -92,9 +94,6 @@ nnoremap 0 ^
 nnoremap <F5> :make<CR>
 nnoremap <F6> :make all<CR>
 cmap w!! !sudo tee % > /dev/null 
-" tab expands completion
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 
 " > C++
@@ -113,43 +112,34 @@ set cinoptions+=N-s
 let g:bufferline_echo = 1 "bufferline plugin
 
 
-" > nvim-completion-manager
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let $NVIM_PYTHON_LOG_FILE="/tmp/nvim_log"
-" let $NVIM_NCM_LOG_LEVEL="DEBUG"
-" let $NVIM_NCM_MULTI_THREAD=0
-
-
 " > Deoplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"if has('nvim')
-"  let g:deoplete#enable_at_startup = 1 
-"  let g:deoplete#enable_refresh_always = 1
+if has('nvim')
+ let g:deoplete#enable_at_startup = 1
 
-"  " C/C++
-"  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-"  let g:deoplete#sources#clang#executable = '/usr/lib/clang/6.0.0/include'
-"  let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
-"  let g:deoplete#sources#clang#flags = ['-Wall', '-pedantic']
+ " C/C++
+ let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+ let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/6.0.0/include'
+ let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
 
-"  " Python
-"  let g:deoplete#sources#jedi#show_docstring = 1
-"  let g:deoplete#sources#jedi#enable_cache = 1
+ " Python
+ let g:deoplete#sources#jedi#show_docstring = 1
+ let g:deoplete#sources#jedi#enable_cache = 1
 
-"  " Tex
-"  augroup vimtex
-"    autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-"  augroup END
 
 "  " debugging mode
 "  " let g:deoplete#enable_profile = 1
 "  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
 "  " call deoplete#custom#set('jedi', 'debug_enabled', 1)
 
-"  if !exists('g:deoplete#omni#input_patterns')
-"    let g:deoplete#omni#input_patterns = {}
-"  endif
-"endif
+ if !exists('g:deoplete#omni#input_patterns')
+   let g:deoplete#omni#input_patterns = {}
+ endif
+ " Tex
+ augroup vimtex
+   autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+ augroup END
+endif
 
 
 " > Latex
@@ -157,6 +147,15 @@ let g:bufferline_echo = 1 "bufferline plugin
 let g:tex_flavor = 'latex'
 let g:polyglot_disabled = ['latex']
 
+let g:vimtex_compiler_latexmk = {
+      \ 'build_dir': '../build/',
+      \ 'callback': 1,
+      \ 'continuous': 1,
+      \ 'executable': 'latexmk',
+      \ 'options': [
+      \   '-xelatex'
+      \],
+\}
 
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -169,5 +168,3 @@ augroup END
 " > Julia
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:default_julia_version = '0.6'
-
-
