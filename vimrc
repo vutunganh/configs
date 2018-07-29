@@ -11,6 +11,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
+  Plug 'itchyny/vim-cursorword'
 " Autocompletion 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
@@ -24,6 +25,14 @@ Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
 Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'}
 
 call plug#end()
+
+" > Neovim config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+endif
 
 
 " > Behaviour
