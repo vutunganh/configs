@@ -119,7 +119,7 @@ if has('nvim')
 
  " C/C++
  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
- let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/6.0.0/include'
+ let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/6.0.1/include'
  let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
 
  " Python
