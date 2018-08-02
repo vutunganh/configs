@@ -12,6 +12,7 @@ alias ls='ls --color=auto'
 alias py2='python2'
 alias py='python'
 alias ..='cd ..'
+alias cal='cal -m'
 
 function mkcd {
   mkdir "$1" && cd "$1"
