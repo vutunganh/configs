@@ -11,7 +11,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
-  Plug 'itchyny/vim-cursorword'
+Plug 'itchyny/vim-cursorword'
 " Autocompletion 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
