@@ -12,27 +12,19 @@ Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
 Plug 'itchyny/vim-cursorword'
-" Autocompletion 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-  Plug 'Shougo/neoinclude.vim'
-  Plug 'zchee/deoplete-clang', {'for': ['cpp', 'c']}
-  Plug 'zchee/deoplete-jedi', {'for': 'python'}
-endif
+" Autocomplete
+Plug 'prabirshrestha/async.vim'
+
+Plug 'ajh17/vimcompletesme'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Latex
 Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
 " Julia
 Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'}
 
 call plug#end()
-
-" > Neovim config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists("$VIRTUAL_ENV")
-    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
-else
-    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
-endif
 
 
 " > Behaviour
@@ -56,6 +48,7 @@ if has("autocmd")
         \ execute "normal! g'\"" |
         \ endif
 endif
+runtime macros/matchit.vim " matchit plugin adds html tags matching
 
 
 " > Editing
@@ -116,39 +109,61 @@ set cinoptions+=g0
 set cinoptions+=N-s
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" > PLUGIN CONFIGS BEGIN HERE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" > Asyncomplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_smart_completion = 1 " fuzzy completion
+let g:asyncomplete_auto_popup = 1
+set completeopt+=preview " use preview window
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " when done with completion close preview window
+
+
+" > Javascript LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('~/node_modules/typescript-language-server/lib/cli.js')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag','~/node_modules/typescript-language-server/lib/cli.js --stdio']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+        \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
+        \ })
+endif
+
+
+" > C/C++ LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('clangd')
+  augroup lsp_clangd
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'clangd',
+          \ 'cmd': {server_info->['clangd']},
+          \ 'whitelist': ['c', 'cpp']
+          \ })
+    autocmd FileType c setlocal omnifunc=lsp#complete
+    autocmd FileType cpp setlocal omnifunc=lsp#complete
+  augroup end
+endif
+
+
 " > Bufferline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:bufferline_echo = 1 "bufferline plugin
 
 
-" > Deoplete
+" > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
- let g:deoplete#enable_at_startup = 1
-
- " C/C++
- let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
- let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/6.0.1/include'
- let g:deoplete#sources#clang#std = {'c': 'c99', 'cpp': 'c++14'}
-
- " Python
- let g:deoplete#sources#jedi#show_docstring = 1
- let g:deoplete#sources#jedi#enable_cache = 1
-
-
-"  " debugging mode
-"  " let g:deoplete#enable_profile = 1
-"  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
-"  " call deoplete#custom#set('jedi', 'debug_enabled', 1)
-
- if !exists('g:deoplete#omni#input_patterns')
-   let g:deoplete#omni#input_patterns = {}
- endif
- " Tex
- augroup vimtex
-   autocmd FileType tex let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
- augroup END
-endif
+augroup commentary
+  autocmd FileType c setlocal commentstring=//\ %s
+  autocmd FileType cpp setlocal commentstring=//\ %s
+augroup END
 
 
 " > Latex
@@ -165,13 +180,6 @@ let g:vimtex_compiler_latexmk = {
       \   '-xelatex'
       \],
 \}
-
-" > Commentary
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup commentary
-  autocmd FileType c setlocal commentstring=//\ %s
-  autocmd FileType cpp setlocal commentstring=//\ %s
-augroup END
 
 
 " > Julia

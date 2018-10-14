@@ -30,9 +30,9 @@ export GIT_PS1_SHOWUPSTREAM=1
 
 export EDITOR=vim
 
-if [ $( type -P 'nvim' ) ]; then
-  alias vim='nvim'
-fi
+# if [ $( type -P 'nvim' ) ]; then
+#   alias vim='nvim'
+# fi
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent -s` > /dev/null 2>&1
