@@ -47,6 +47,7 @@ if has("autocmd")
         \ endif
 endif
 runtime macros/matchit.vim " matchit plugin adds html tags matching
+set path+=**    " fuzzy find from cwd
 
 
 " > Editing
@@ -126,12 +127,15 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " when done with c
 " > Javascript LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('~/node_modules/typescript-language-server/lib/cli.js')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag','~/node_modules/typescript-language-server/lib/cli.js --stdio']},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-        \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
-        \ })
+  augroup lsp_javascript
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'typescript-language-server',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag','~/node_modules/typescript-language-server/lib/cli.js --stdio']},
+          \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
+          \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
+          \ })
+    autocmd FileType js setlocal omnifunc=lsp#complete
+  augroup end
 endif
 
 
