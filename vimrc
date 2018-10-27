@@ -19,8 +19,6 @@ Plug 'ajh17/vimcompletesme'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Latex
-Plug 'lervag/vimtex', {'for': ['tex', 'latex']}
 " Julia
 Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'}
 
