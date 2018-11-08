@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [[ $TERM == xterm-termite ]]; then
+      .  /etc/profile.d/vte.sh
+      __vte_prompt_command
+fi
+
 shopt -s histappend
 shopt -s cmdhist
 HISTFILESIZE=1000000
