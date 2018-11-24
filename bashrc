@@ -1,6 +1,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [[ $TERM == xterm-termite ]]; then
+      .  /etc/profile.d/vte.sh
+      __vte_prompt_command
+fi
+
 shopt -s histappend
 shopt -s cmdhist
 HISTFILESIZE=1000000
@@ -18,7 +23,11 @@ function mkcd {
   mkdir "$1" && cd "$1"
 }
 
-source /usr/share/git/completion/git-prompt.sh
+if [ -z "${GIT_PROMPT_PATH}" ]; then
+	echo "Export git prompt path in ~/.bashrc"
+else
+	source "${GIT_PROMPT_PATH}"
+fi
 
 export TERM=xterm-256color
 

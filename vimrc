@@ -1,7 +1,5 @@
 call plug#begin()
 
-" Packages
-Plug 'sheerun/vim-polyglot'
 " Bufferline
 Plug 'bling/vim-bufferline'
 " Easy editing
@@ -157,7 +155,7 @@ endif
 
 " > Bufferline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:bufferline_echo = 1 "bufferline plugin
+let g:bufferline_echo = 1 " bufferline plugin
 
 
 " > Commentary
@@ -167,23 +165,3 @@ augroup commentary
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
 
-
-" > Latex
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor = 'latex'
-let g:polyglot_disabled = ['latex']
-
-let g:vimtex_compiler_latexmk = {
-      \ 'build_dir': '../build/',
-      \ 'callback': 1,
-      \ 'continuous': 1,
-      \ 'executable': 'latexmk',
-      \ 'options': [
-      \   '-xelatex'
-      \],
-\}
-
-
-" > Julia
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:default_julia_version = '0.6'
