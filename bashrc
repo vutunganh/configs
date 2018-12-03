@@ -23,7 +23,11 @@ function mkcd {
   mkdir "$1" && cd "$1"
 }
 
-source /usr/share/git/completion/git-prompt.sh
+if [ -z "${GIT_PROMPT_PATH}" ]; then
+	echo "Export git prompt path in ~/.bashrc"
+else
+	source "${GIT_PROMPT_PATH}"
+fi
 
 export TERM=xterm-256color
 

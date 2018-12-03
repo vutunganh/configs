@@ -1,0 +1,9 @@
+URxvt.background: Black
+URxvt.foreground: Gray
+URxvt.font: xft:Monospace:pixelsize=12
+URxvt.scrollBar: true
+URxvt.scrollBar_right: true
+URxvt.saveLines: 99999
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
