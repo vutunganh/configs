@@ -1,7 +1,5 @@
 call plug#begin()
 
-" Bufferline
-Plug 'bling/vim-bufferline'
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
