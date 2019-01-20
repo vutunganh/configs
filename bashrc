@@ -1,11 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [[ $TERM == xterm-termite ]]; then
-      .  /etc/profile.d/vte.sh
-      __vte_prompt_command
-fi
-
 shopt -s histappend
 shopt -s cmdhist
 HISTFILESIZE=1000000
@@ -24,24 +19,19 @@ function mkcd {
 }
 
 if [ -z "${GIT_PROMPT_PATH}" ]; then
-	echo "Export git prompt path in ~/.bashrc"
+  echo "Export git prompt path in ~/.bashrc"
+  PS1='\u@\h:\w\n\$'
 else
-	source "${GIT_PROMPT_PATH}"
+  source "${GIT_PROMPT_PATH}"
+  PS1='\u@\h \w $(__git_ps1 "(%s)")\n\$ '
+  export GIT_PS1_SHOWDIRTYSTATE=1
+  export GIT_PS1_SHOWSTASHSTATE=1
+  export GIT_PS1_SHOWUNTRACKEDFILES=1
+  export GIT_PS1_SHOWUPSTREAM=1
 fi
 
 export TERM=xterm-256color
-
-PS1='\u@\h \w $(__git_ps1 "(%s)")\n\$ '
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-export GIT_PS1_SHOWUPSTREAM=1
-
 export EDITOR=vim
-
-# if [ $( type -P 'nvim' ) ]; then
-#   alias vim='nvim'
-# fi
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent -s` > /dev/null 2>&1
