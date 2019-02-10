@@ -17,6 +17,8 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Julia
 Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'}
+" Javascript
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 
 call plug#end()
 
