@@ -117,7 +117,7 @@ imap <c-space> <Plug>(asyncomplete_force_refresh)
 
 let g:asyncomplete_remove_duplicates = 1
 let g:asyncomplete_smart_completion = 1 " fuzzy completion
-let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_popup = 0
 set completeopt+=preview " use preview window
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " when done with completion close preview window
 
