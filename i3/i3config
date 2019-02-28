@@ -158,7 +158,6 @@ exec --no-startup-id thunderbird
 exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id pasystray
-exec --no-startup-id dropbox
 
 # Screenshooting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
