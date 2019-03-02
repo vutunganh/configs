@@ -7,7 +7,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
+" UI
 Plug 'itchyny/vim-cursorword'
+Plug 'tpope/vim-eunuch'
+Plug 'raymond-w-ko/vim-niji'
 " Autocomplete
 Plug 'prabirshrestha/async.vim'
 
