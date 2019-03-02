@@ -9,8 +9,6 @@ HISTCONTROL=ignoreboth:erasedups
 HISTIGNORE='ls:bg:fg:cd'
 
 alias ls='ls --color=auto'
-alias py2='python2'
-alias py='python'
 alias ..='cd ..'
 alias cal='cal -m'
 
@@ -20,7 +18,7 @@ function mkcd {
 
 if [ -z "${GIT_PROMPT_PATH}" ]; then
   echo "Export git prompt path in ~/.bashrc"
-  PS1='\u@\h:\w\n\$'
+  PS1='\u@\h:\w\n\$ '
 else
   source "${GIT_PROMPT_PATH}"
   PS1='\u@\h \w $(__git_ps1 "(%s)")\n\$ '
