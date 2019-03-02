@@ -75,7 +75,7 @@ colorscheme elflord
 set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
-set statusline=\ %f%y%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l\/%L\ Column:\ %c
+set statusline=\ %f%y%m%r%h\ %w\ L:\ %l\/%L\ C:\ %c
 set nohlsearch
 hi Folded ctermbg=black
 
@@ -86,9 +86,8 @@ endif
 
 " > Keybindings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = "<Space>"
-let g:mapleader = "<Space>"
 nnoremap 0 ^
+nnoremap ^ 0
 " 0 moves to the beginning of line
 nnoremap <F5> :make<CR>
 nnoremap <F6> :make all<CR>
@@ -151,11 +150,6 @@ if executable('clangd')
     autocmd FileType cpp setlocal omnifunc=lsp#complete
   augroup end
 endif
-
-
-" > Bufferline
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:bufferline_echo = 1 " bufferline plugin
 
 
 " > Commentary
