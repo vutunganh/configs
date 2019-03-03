@@ -3,14 +3,16 @@ call plug#begin()
 " Easy editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'Raimondi/delimitMate'
 Plug 'tommcdo/vim-lion'
+" Additional keybindings
+Plug 'tpope/vim-unimpaired'
 " UI
 Plug 'itchyny/vim-cursorword'
-Plug 'tpope/vim-eunuch'
 Plug 'raymond-w-ko/vim-niji'
+" UNIX Helper
+Plug 'tpope/vim-eunuch'
 " Autocomplete
 Plug 'prabirshrestha/async.vim'
 
@@ -41,12 +43,10 @@ set t_vb=       " don't flash when scrolling past first/last line
 set nobackup    " no backups at all
 set noswapfile
 " remember cursor position when reopening a file
-if has("autocmd")
-  autocmd BufReadPost *
-        \ if line("'\"") > 1 && line("'\"") <= line("$") |
-        \ execute "normal! g'\"" |
-        \ endif
-endif
+autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \ execute "normal! g'\"" |
+      \ endif
 runtime macros/matchit.vim " matchit plugin adds html tags matching
 set path+=**    " fuzzy find from cwd
 
@@ -161,4 +161,3 @@ augroup commentary
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
-
