@@ -11,6 +11,8 @@ HISTIGNORE='ls:bg:fg:cd'
 alias ls='ls --color=auto'
 alias ..='cd ..'
 alias cal='cal -m'
+alias cp='cp -i'
+alias mv='mv -i'
 
 function mkcd {
   mkdir "$1" && cd "$1"
