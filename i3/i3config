@@ -159,6 +159,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id pasystray
 exec --no-startup-id pcloud
+exec --no-startup-id urxvt -e bash -i -c 'ssh -t tung@dirichlet.eu tmux a -t 0'
 
 # Screenshooting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
