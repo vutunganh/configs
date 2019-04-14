@@ -15,15 +15,14 @@ Plug 'raymond-w-ko/vim-niji'
 Plug 'tpope/vim-eunuch'
 " Autocomplete
 Plug 'prabirshrestha/async.vim'
-
 Plug 'ajh17/vimcompletesme'
-Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Julia
-Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'}
-" Javascript
+
+" Javascript & JSX
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'mxw/vim-jsx', {'for': 'javascript'}
 
 call plug#end()
 
