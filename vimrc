@@ -15,7 +15,6 @@ Plug 'raymond-w-ko/vim-niji'
 Plug 'tpope/vim-eunuch'
 " Autocomplete
 Plug 'prabirshrestha/async.vim'
-Plug 'ajh17/vimcompletesme'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
