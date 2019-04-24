@@ -151,10 +151,11 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 3 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightness
 
 # Autostart
-exec xset -dpms
-exec redshift-gtk
-exec "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
-exec --no-startup-id thunderbird
+exec --no-startup-id xset -dpms
+exec --no-startup-id feh --bg-scale ~/pictures/wallpaper.jpg
+exec --no-startup-id redshift-gtk
+exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
+exec thunderbird
 exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id pasystray
