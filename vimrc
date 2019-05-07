@@ -18,10 +18,9 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-" Javascript & JSX
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'mxw/vim-jsx', {'for': 'javascript'}
+" Typescript
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'peitalin/vim-jsx-typescript', {'for': 'typescript'}
 
 call plug#end()
 
@@ -34,7 +33,7 @@ set smartcase   " cooperate with ignorecase
 set hidden      " switch buffers without having to save the file being left
 set incsearch   " incrementally shows searched pattern
 set lazyredraw  " doesn't redraw screen when typing commands
-set mouse=a     " mouse in terminal??
+set mouse=a     " mouse in terminal
 set noeb        " no error bell
 set vb          " visual bell
 set t_vb=       " don't flash when scrolling past first/last line
@@ -89,10 +88,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap 0 ^
 nnoremap ^ 0
-" 0 moves to the beginning of line
 nnoremap <F5> :make<CR>
-nnoremap <F6> :make all<CR>
-cmap w!! !sudo tee % > /dev/null 
 
 
 " > C++
@@ -111,31 +107,35 @@ set cinoptions+=N-s
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+" > Vim-lsp
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lsp_diagnostics_enabled = 0
+
+
 " > Asyncomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <c-space> <Plug>(asyncomplete_force_refresh)
-
-let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_smart_completion = 1 " fuzzy completion
+imap <C-Space> <Plug>(asyncomplete_force_refresh)
 let g:asyncomplete_auto_popup = 0
-set completeopt+=preview " use preview window
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif " when done with completion close preview window
+set completeopt=menuone,noinsert,noselect,preview
 
 
-" > Javascript LSP
+" > Typescript LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if executable('~/node_modules/typescript-language-server/lib/cli.js')
-  augroup lsp_javascript
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'typescript-language-server',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag','~/node_modules/typescript-language-server/lib/cli.js --stdio']},
-          \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-          \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx']
-          \ })
-    autocmd FileType js setlocal omnifunc=lsp#complete
-  augroup end
-endif
+let g:tslangserver_path = expand('~/node_modules/typescript-language-server/lib/cli.js')
 
+if executable(g:tslangserver_path)
+  augroup lsp_typescript
+    autocmd!
+    autocmd! User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, join([g:tslangserver_path, '--stdio'], " ")]},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript', 'typescript.tsx'],
+        \ })
+  augroup end
+  autocmd FileType typescript setlocal omnifunc=lsp#complete
+  autocmd FileType typescript.tsx setlocal omnifunc=lsp#complete
+endif
 
 " > C/C++ LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -156,6 +156,7 @@ endif
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup commentary
+  autocmd!
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
