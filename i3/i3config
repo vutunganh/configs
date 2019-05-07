@@ -139,6 +139,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3blocks
+        tray_output primary
 }
 
 # Pulse Audio controls
