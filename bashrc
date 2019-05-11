@@ -18,6 +18,10 @@ function mkcd {
   mkdir "$1" && cd "$1"
 }
 
+if command -v nvim > /dev/null 2>&1; then
+  alias vim=nvim
+fi
+
 if [ -z "${GIT_PROMPT_PATH}" ]; then
   echo "Export git prompt path in ~/.bashrc"
   PS1='\u@\h:\w\n\$ '
