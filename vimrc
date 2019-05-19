@@ -121,7 +121,7 @@ set completeopt=menuone,noinsert,noselect,preview
 
 " > Typescript LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tslangserver_path = expand('~/node_modules/typescript-language-server/lib/cli.js')
+let g:tslangserver_path = expand('~/.npm-packages/bin/typescript-language-server')
 
 if executable(g:tslangserver_path)
   augroup lsp_typescript
