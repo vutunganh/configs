@@ -37,8 +37,6 @@ set mouse=a     " mouse in terminal
 set noeb        " no error bell
 set vb          " visual bell
 set t_vb=       " don't flash when scrolling past first/last line
-set nobackup    " no backups at all
-set noswapfile
 " remember cursor position when reopening a file
 autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
