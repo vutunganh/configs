@@ -6,7 +6,7 @@ shopt -s cmdhist
 HISTFILESIZE=1000000
 HISTSIZE=1000000
 HISTCONTROL=ignoreboth:erasedups
-HISTIGNORE='ls:bg:fg:cd'
+HISTIGNORE='ls:bg:fg:cd:vim'
 
 alias ls='ls --color=auto'
 alias ..='cd ..'
