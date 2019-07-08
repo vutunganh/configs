@@ -110,6 +110,7 @@ set cinoptions+=N-s
 " > Vim-lsp
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lsp_diagnostics_enabled = 0
+let g:lsp_highlight_references_enabled = 0
 
 
 " > Asyncomplete
