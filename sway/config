@@ -17,7 +17,7 @@ set $right l
 set $term urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu rofi -show run
+set $menu j4-dmenu-desktop --dmenu='bemenu-run -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='urxvt'
 
 ### Output configuration
 #
@@ -188,3 +188,11 @@ bar {
 #
 exec thunderbird
 exec urxvt -e bash -i -c 'ssh -t tung@tobysenamatfyzunestalo.eu tmux a -t 0'
+
+#
+# Screenshots
+#
+bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') pictures/screenshot-$(date +'%Y%m%d%H%M%S.png')
+bindsym Ctrl+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+bindsym Shift+Print exec grim -g "$(slurp)" pictures/screenshot-$(date +'%Y%m%d%H%M%S.png')
+bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
