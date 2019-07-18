@@ -147,21 +147,21 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 3 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 3 # decrease screen brightness
+# Screen
+bindsym Control+$mod+L exec i3lock -c 000000
+bindsym XF86Display exec xset dpms force off
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 3
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 3
 
 # Autostart
-exec --no-startup-id xset -dpms
 exec --no-startup-id feh --bg-scale ~/pictures/wallpaper.jpg
 exec --no-startup-id redshift-gtk
-exec --no-startup-id "setxkbmap -model pc105 -layout us,cz -variant ,qwerty -option grp:ctrls_toggle"
 exec thunderbird
 exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id pasystray
 exec --no-startup-id pcloud
-exec --no-startup-id urxvt -e bash -i -c 'ssh -t tung@dirichlet.eu tmux a -t 0'
+exec urxvt -e bash -i -c 'ssh -t tung@dirichlet.eu tmux a -t 0'
 
 # Screenshooting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
