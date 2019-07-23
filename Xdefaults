@@ -1,8 +1,10 @@
 URxvt.background: Black
 URxvt.foreground: Gray
-URxvt.font: xft:Monospace:pixelsize=12
+URxvt.font: xft:Monospace:pixelsize=11
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
 URxvt.saveLines: 99999
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/xdg-open
