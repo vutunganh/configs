@@ -20,7 +20,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Typescript
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript', 'tsx']}
+Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript', 'tsx', 'typescript.tsx']}
 
 call plug#end()
 
