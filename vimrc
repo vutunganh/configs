@@ -102,6 +102,13 @@ set cinoptions+=g0
 set cinoptions+=N-s
 
 
+" > Typescript
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup typescript
+  autocmd Filetype typescriptreact set filetype=typescript
+augroup END
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " > PLUGIN CONFIGS BEGIN HERE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -135,7 +142,6 @@ if executable(g:tslangserver_path)
         \ })
   augroup end
   autocmd FileType typescript setlocal omnifunc=lsp#complete
-  autocmd FileType typescript.tsx setlocal omnifunc=lsp#complete
 endif
 
 " > C/C++ LSP
@@ -161,3 +167,8 @@ augroup commentary
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
 augroup END
+
+
+" > vim-jsx-pretty
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vim_jsx_pretty_colorful_config = 1
