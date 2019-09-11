@@ -18,9 +18,11 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Javascript
+Plug 'pangloss/vim-javascript'
 " Typescript
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plug 'peitalin/vim-jsx-typescript', {'for': ['typescript', 'tsx', 'typescript.tsx']}
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
 call plug#end()
 
