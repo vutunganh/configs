@@ -32,5 +32,5 @@ label=TEMP
 interval=10
 
 [time]
-command=date '+%Y/%m/%d %H:%M:%S'
+command=date '+%A %Y/%m/%d %H:%M:%S'
 interval=1
