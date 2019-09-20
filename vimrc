@@ -1,30 +1,34 @@
-call plug#begin()
+let g:has_plugin_manager = !empty(glob('~/.vim/autoload/plug.vim'))
 
-" Easy editing
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
-Plug 'Raimondi/delimitMate'
-Plug 'tommcdo/vim-lion'
-" Additional keybindings
-Plug 'tpope/vim-unimpaired'
-" UI
-Plug 'itchyny/vim-cursorword'
-Plug 'raymond-w-ko/vim-niji'
-" UNIX Helper
-Plug 'tpope/vim-eunuch'
-" Autocomplete
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Javascript
-Plug 'pangloss/vim-javascript'
-" Typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty'
+if g:has_plugin_manager
+  call plug#begin()
 
-call plug#end()
+  " Easy editing
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-repeat'
+  Plug 'Raimondi/delimitMate'
+  Plug 'tommcdo/vim-lion'
+  " Additional keybindings
+  Plug 'tpope/vim-unimpaired'
+  " UI
+  Plug 'itchyny/vim-cursorword'
+  Plug 'raymond-w-ko/vim-niji'
+  " UNIX Helper
+  Plug 'tpope/vim-eunuch'
+  " Autocomplete
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  " Javascript
+  Plug 'pangloss/vim-javascript'
+  " Typescript
+  Plug 'leafgarland/typescript-vim'
+  Plug 'maxmellon/vim-jsx-pretty'
+
+  call plug#end()
+endif
 
 
 " > Behaviour
@@ -105,13 +109,15 @@ set cinoptions+=N-s
 " > Typescript
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup typescript
-  autocmd Filetype typescriptreact set filetype=typescript
+  autocmd Filetype typescriptreact set filetype=typescript.tsx
 augroup END
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " > PLUGIN CONFIGS BEGIN HERE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+if g:has_plugin_manager
 
 
 " > Vim-lsp
@@ -122,8 +128,10 @@ let g:lsp_highlight_references_enabled = 0
 
 " > Asyncomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 imap <C-Space> <Plug>(asyncomplete_force_refresh)
-let g:asyncomplete_auto_popup = 0
 set completeopt=menuone,noinsert,noselect,preview
 
 
@@ -137,12 +145,12 @@ if executable(g:tslangserver_path)
     autocmd! User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, join([g:tslangserver_path, '--stdio'], " ")]},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ 'whitelist': ['typescript', 'typescript.tsx'],
         \ })
   augroup end
-  autocmd FileType typescript setlocal omnifunc=lsp#complete
 endif
+
 
 " > C/C++ LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -151,11 +159,25 @@ if executable('clangd')
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'clangd',
-          \ 'cmd': {server_info->['clangd']},
-          \ 'whitelist': ['c', 'cpp']
+          \ 'cmd': {server_info->['clangd', '-background-index']},
+          \ 'whitelist': ['c', 'cpp'],
           \ })
-    autocmd FileType c setlocal omnifunc=lsp#complete
-    autocmd FileType cpp setlocal omnifunc=lsp#complete
+  augroup end
+endif
+
+
+" > css LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:csslangserver_path = expand('~/.npm-packages/bin/css-languageserver')
+
+if executable(g:csslangserver_path)
+  augroup css_typescript
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'css-languageserver',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
+          \ 'whitelist': ['css', 'less', 'sass'],
+          \ })
   augroup end
 endif
 
@@ -172,3 +194,6 @@ augroup END
 " > vim-jsx-pretty
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_jsx_pretty_colorful_config = 1
+
+
+endif
