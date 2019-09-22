@@ -26,6 +26,8 @@ if g:has_plugin_manager
   " Typescript
   Plug 'leafgarland/typescript-vim'
   Plug 'maxmellon/vim-jsx-pretty'
+  " Editor config
+  Plug 'editorconfig/editorconfig-vim'
 
   call plug#end()
 endif
