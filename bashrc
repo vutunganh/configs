@@ -18,8 +18,10 @@ function mkcd {
   mkdir "$1" && cd "$1"
 }
 
+export EDITOR=vim
 if command -v nvim > /dev/null 2>&1; then
   alias vim=nvim
+  export EDITOR=nvim
 fi
 
 if [ -z "${GIT_PROMPT_PATH}" ]; then
@@ -35,7 +37,6 @@ else
 fi
 
 export TERM=xterm-256color
-export EDITOR=vim
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent -s` > /dev/null 2>&1
