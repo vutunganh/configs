@@ -108,9 +108,27 @@ set cinoptions+=g0
 set cinoptions+=N-s
 
 
+" > Javascript
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jsprettier_path = expand('~/.npm-packages/bin/prettier')
+
+if executable(g:jsprettier_path)
+  augroup javascript
+    autocmd!
+    autocmd FileType javascript setlocal formatprg=g:jsprettier_path
+    autocmd FileType javascript.jsx setlocal formatprg=g:jsprettier_path
+    autocmd FileType typescript setlocal formatprg=g:jsprettier_path\ --parser\ typescript
+    autocmd FileType typescript.tsx setlocal formatprg=g:jsprettier_path\ --parser\ typescript
+    autocmd FileType html setlocal formatprg=g:jsprettier_path\ --type\ html
+    autocmd FileType scss setlocal formatprg=g:jsprettier_path\ --parser\ css
+    autocmd FileType css setlocal formatprg=g:jsprettier_path\ --parser\ css
+  augroup end
+endif
+
 " > Typescript
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup typescript
+  autocmd!
   autocmd Filetype typescriptreact set filetype=typescript.tsx
 augroup END
 
@@ -130,23 +148,20 @@ let g:lsp_highlight_references_enabled = 0
 
 " > Asyncomplete
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 imap <C-Space> <Plug>(asyncomplete_force_refresh)
 set completeopt=menuone,noinsert,noselect,preview
 
 
 " > Typescript LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tslangserver_path = expand('~/.npm-packages/bin/typescript-language-server')
+let g:tslangserver_path = expand('~/.npm-packages/bin/javascript-typescript-stdio')
 
 if executable(g:tslangserver_path)
   augroup lsp_typescript
     autocmd!
     autocmd! User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, join([g:tslangserver_path, '--stdio'], " ")]},
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, g:tslangserver_path]},
         \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ 'whitelist': ['typescript', 'typescript.tsx'],
         \ })
