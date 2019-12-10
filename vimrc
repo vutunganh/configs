@@ -110,20 +110,19 @@ set cinoptions+=N-s
 
 " > Javascript
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jsprettier_path = expand('~/.npm-packages/bin/prettier')
-
-if executable(g:jsprettier_path)
+if executable('prettier')
   augroup javascript
     autocmd!
-    autocmd FileType javascript setlocal formatprg=g:jsprettier_path
-    autocmd FileType javascript.jsx setlocal formatprg=g:jsprettier_path
-    autocmd FileType typescript setlocal formatprg=g:jsprettier_path\ --parser\ typescript
-    autocmd FileType typescript.tsx setlocal formatprg=g:jsprettier_path\ --parser\ typescript
-    autocmd FileType html setlocal formatprg=g:jsprettier_path\ --type\ html
-    autocmd FileType scss setlocal formatprg=g:jsprettier_path\ --parser\ css
-    autocmd FileType css setlocal formatprg=g:jsprettier_path\ --parser\ css
+    autocmd FileType javascript setlocal formatprg=prettier
+    autocmd FileType javascript.jsx setlocal formatprg=prettier
+    autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+    autocmd FileType typescript.tsx setlocal formatprg=prettier\ --parser\ typescript
+    autocmd FileType html setlocal formatprg=prettier\ --type\ html
+    autocmd FileType scss setlocal formatprg=prettier\ --parser\ css
+    autocmd FileType css setlocal formatprg=prettier\ --parser\ css
   augroup end
 endif
+
 
 " > Typescript
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,16 +153,14 @@ set completeopt=menuone,noinsert,noselect,preview
 
 " > Typescript LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tslangserver_path = expand('~/.npm-packages/bin/javascript-typescript-stdio')
-
-if executable(g:tslangserver_path)
+if executable('typescript-language-server')
   augroup lsp_typescript
     autocmd!
     autocmd! User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, g:tslangserver_path]},
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-        \ 'whitelist': ['typescript', 'typescript.tsx'],
+        \ 'whitelist': ['javascript', 'javascript.jsx', 'typescript', 'typescript.tsx'],
         \ })
   augroup end
 endif
@@ -185,9 +182,7 @@ endif
 
 " > css LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:csslangserver_path = expand('~/.npm-packages/bin/css-languageserver')
-
-if executable(g:csslangserver_path)
+if executable('css-languageserver')
   augroup css_typescript
     autocmd!
     autocmd User lsp_setup call lsp#register_server({

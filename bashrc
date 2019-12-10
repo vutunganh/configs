@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export PATH="${PATH}":~/.npm-packages/bin/
+export TERM=xterm-256color
+
 shopt -s histappend
 shopt -s cmdhist
 HISTFILESIZE=1000000
@@ -35,8 +38,6 @@ else
   export GIT_PS1_SHOWUNTRACKEDFILES=1
   export GIT_PS1_SHOWUPSTREAM=1
 fi
-
-export TERM=xterm-256color
 
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
   eval `ssh-agent -s` > /dev/null 2>&1
