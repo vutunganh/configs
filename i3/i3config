@@ -160,8 +160,7 @@ exec thunderbird
 exec --no-startup-id nm-applet
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id pasystray
-exec --no-startup-id pcloud
-exec urxvt -e bash -i -c 'weechat'
+exec hexchat
 
 # Screenshooting
 bindsym --release Print exec --no-startup-id "maim --format=png ~/pictures/screenshot_$(date +%s).png"
