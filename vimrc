@@ -4,9 +4,8 @@ if g:has_plugin_manager
   call plug#begin()
 
   " Easy editing
-  Plug 'tpope/vim-surround'
+  Plug 'machakann/vim-sandwich'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-repeat'
   Plug 'Raimondi/delimitMate'
   Plug 'tommcdo/vim-lion'
   " Additional keybindings
