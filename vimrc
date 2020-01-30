@@ -182,7 +182,7 @@ endif
 " > css LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('css-languageserver')
-  augroup css_typescript
+  augroup lsp_css
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'css-languageserver',
