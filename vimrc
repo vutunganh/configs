@@ -19,7 +19,7 @@ if g:has_plugin_manager
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/vim-lsp'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim', { 'commit': '9e7b2492578dca86ed12b6352cb56d9fc8ac9a6e' }
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
   " Javascript
   Plug 'pangloss/vim-javascript'
   " Typescript
