@@ -179,20 +179,6 @@ if executable('clangd')
 endif
 
 
-" > css LSP
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if executable('css-languageserver')
-  augroup lsp_css
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'css-languageserver',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'css-languageserver --stdio']},
-          \ 'whitelist': ['css', 'less', 'sass'],
-          \ })
-  augroup end
-endif
-
-
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup commentary
