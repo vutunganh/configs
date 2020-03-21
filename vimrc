@@ -25,6 +25,8 @@ if g:has_plugin_manager
   " Typescript
   Plug 'leafgarland/typescript-vim'
   Plug 'maxmellon/vim-jsx-pretty'
+  " Julia
+  Plug 'JuliaEditorSupport/julia-vim'
   " Editor config
   Plug 'editorconfig/editorconfig-vim'
 
@@ -192,6 +194,7 @@ if executable('rls')
           \ })
   augroup end
 endif
+
 
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
