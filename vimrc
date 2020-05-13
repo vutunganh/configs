@@ -185,21 +185,6 @@ if executable('clangd')
 endif
 
 
-" > Rust LSP
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if executable('rls')
-  augroup lsp_rust
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'rls',
-          \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-          \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-          \ 'whitelist': ['rust'],
-          \ })
-  augroup end
-endif
-
-
 " > Julia LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable('julia')
