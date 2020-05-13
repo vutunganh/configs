@@ -144,6 +144,10 @@ if g:has_plugin_manager
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_highlight_references_enabled = 0
+" Debugging
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 
 " > Asyncomplete
@@ -191,6 +195,26 @@ if executable('rls')
           \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
           \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
           \ 'whitelist': ['rust'],
+          \ })
+  augroup end
+endif
+
+
+" > Julia LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('julia')
+  augroup lsp_julia
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'LanguageServer.jl',
+          \ 'cmd': {server_info->['julia', '--startup-file=no', '--history-file=no', '-e', '
+          \ using LanguageServer;
+          \ using Pkg;
+          \ env_path = dirname(Pkg.Types.Context().env.project_file);
+          \ server = LanguageServerInstance(stdin, stdout, env_path);
+          \ server.runlinter = true;
+          \ run(server);']},
+          \ 'whitelist': ['julia'],
           \ })
   augroup end
 endif
