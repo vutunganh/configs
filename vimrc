@@ -65,6 +65,11 @@ set smarttab      " bs deletes a bunch of spaces like a tab
 set shiftwidth=2  " tab size when indenting
 set softtabstop=2 " ``tab'' size
 set wrap          " wrap lines
+" persistent undo
+set undofile
+set undodir=expand('$HOME/.vim/undo')
+set undolevels=1000
+set undoreload=1000
 
 
 " > Spell check
