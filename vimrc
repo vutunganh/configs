@@ -34,6 +34,13 @@ if g:has_plugin_manager
 endif
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" > Constants
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let vimDir = '$HOME/.vim'
+let &runtimepath .= ',' . vimDir
+
+
 " > Behaviour
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=5 " lines above/below cursor
@@ -66,10 +73,15 @@ set shiftwidth=2  " tab size when indenting
 set softtabstop=2 " ``tab'' size
 set wrap          " wrap lines
 " persistent undo
-set undofile
-set undodir=expand('$HOME/.vim/undo')
-set undolevels=1000
-set undoreload=1000
+if has('persistent_undo')
+  let myUndoDir = expand(vimDir . '/undo')
+  call system('mkdir ' . vimDir)
+  call system('mkdir ' . myUndoDir)
+  let &undodir = myUndoDir
+  set undofile
+  set undolevels=1000
+  set undoreload=1000
+end
 
 
 " > Spell check
