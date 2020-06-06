@@ -38,7 +38,14 @@ exec swayidle -w \
          before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
-# Done elsewhere
+#
+# Keyboard:
+#
+input * {
+  xkb_layout "us,cz"
+  xkb_variant ",qwerty"
+  xkb_options "grp:ctrls_toggle,caps:swapescape"
+}
 
 ### Key bindings
 #
