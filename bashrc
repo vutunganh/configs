@@ -4,6 +4,7 @@
 export PATH="${PATH}":~/.npm-packages/bin/
 export TERM=xterm-256color
 
+shopt -s autocd
 shopt -s histappend
 shopt -s cmdhist
 HISTFILESIZE=1000000
@@ -12,7 +13,6 @@ HISTCONTROL=ignoreboth:erasedups
 HISTIGNORE='ls:bg:fg:cd:vim'
 
 alias ls='ls --color=auto'
-alias ..='cd ..'
 alias cal='cal -m'
 alias cp='cp -i'
 alias mv='mv -i'
