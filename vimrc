@@ -17,9 +17,7 @@ if g:has_plugin_manager
   Plug 'tpope/vim-eunuch'
   " Autocomplete
   Plug 'prabirshrestha/async.vim'
-  Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/vim-lsp'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
   " Javascript
   Plug 'pangloss/vim-javascript'
   " Typescript
@@ -164,14 +162,16 @@ let g:lsp_highlight_references_enabled = 0
 " Debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+endfunction
 
-" > Asyncomplete
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap <C-Space> <Plug>(asyncomplete_force_refresh)
-set completeopt=menuone,noinsert,noselect,preview
-
+augroup lsp_install
+  autocmd!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup end
 
 " > Typescript LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
