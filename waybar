@@ -1,0 +1,50 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-right": ["network", "pulseaudio", "battery", "clock", "tray"],
+
+  "sway/workspaces": {
+    "disable-scroll-wraparound": true,
+    "enable-bar-scroll" :true,
+    "format-icons": {
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+  "battery": {
+    "format": "{capacity}% {time} {icon}",
+    "format-time": "({H}h {M}min)",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%a  %Y/%m/%d  %H:%M:%S}"
+  },
+  "network": {
+    "format": "↓/↑ {bandwidthDownBits}/{bandwidthUpBits} {ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": ""
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle"
+  },
+  "tray": {
+    "icon-size": 24,
+    "spacing": 8
+  }
+}
