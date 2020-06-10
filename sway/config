@@ -17,7 +17,7 @@ set $right l
 set $term urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu j4-dmenu-desktop --dmenu='bemenu-run -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='urxvt'
+set $menu j4-dmenu-desktop --dmenu="(cat; (stest -flx $(echo $PATH | tr : ' ') | sort -u)) | bemenu"
 set $screenlock swaylock -f -c 000000
 
 ### Output configuration
