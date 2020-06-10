@@ -18,6 +18,7 @@ set $term urxvt
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu j4-dmenu-desktop --dmenu='bemenu-run -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono 12"' --term='urxvt'
+set $screenlock swaylock -f -c 000000
 
 ### Output configuration
 #
@@ -35,7 +36,7 @@ exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep $screenlock
 
 ### Input configuration
 #
@@ -72,6 +73,8 @@ input * {
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    bindsym Control+$mod+l exec $screenlock
 #
 # Moving around:
 #
