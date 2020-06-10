@@ -188,7 +188,7 @@ bar {
 # Autostart
 #
 exec thunderbird
-exec urxvt -e bash -i -c 'ssh -t tung@tobysenamatfyzunestalo.eu tmux a -t 0'
+exec hexchat
 
 #
 # Screenshots
