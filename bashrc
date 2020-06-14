@@ -1,9 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PATH="${PATH}":~/.npm-packages/bin/
-export TERM=xterm-256color
-
 shopt -s autocd
 shopt -s histappend
 shopt -s cmdhist
