@@ -29,17 +29,3 @@ else
   export GIT_PS1_SHOWUNTRACKEDFILES=1
   export GIT_PS1_SHOWUPSTREAM=1
 fi
-
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent -s` > /dev/null 2>&1
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null 2>&1 || ssh-add > /dev/null 2>&1
-
-for f in ~/.ssh/*; do
-  if [[ "$f" != *.pub && "$f" != 'known_hosts' && "$f" != 'config' ]]; then
-    ssh-add "$f" > /dev/null 2>&1
-  fi
-done
