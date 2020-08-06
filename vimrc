@@ -158,8 +158,8 @@ if g:has_plugin_manager
 
 " > Vim-lsp
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_highlight_references_enabled = 0
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_highlight_references_enabled = 1
 " Debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
@@ -213,6 +213,8 @@ if executable('julia')
           \ 'cmd': {server_info->['julia', '--startup-file=no', '--history-file=no', '-e', '
           \ using LanguageServer;
           \ using Pkg;
+          \ import SymbolServer;
+          \ import StaticLint;
           \ env_path = dirname(Pkg.Types.Context().env.project_file);
           \ server = LanguageServerInstance(stdin, stdout, env_path);
           \ server.runlinter = true;
