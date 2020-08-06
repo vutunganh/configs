@@ -215,6 +215,7 @@ if executable('julia')
           \ using Pkg;
           \ import SymbolServer;
           \ import StaticLint;
+          \ Pkg.activate(".");
           \ env_path = dirname(Pkg.Types.Context().env.project_file);
           \ server = LanguageServerInstance(stdin, stdout, env_path);
           \ server.runlinter = true;
