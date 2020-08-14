@@ -213,17 +213,23 @@ if executable('julia')
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'LanguageServer.jl',
-          \ 'cmd': {server_info->['julia', '--startup-file=no', '--history-file=no', '-e', '
-          \ using LanguageServer;
-          \ using Pkg;
-          \ import SymbolServer;
-          \ import StaticLint;
-          \ Pkg.activate(".");
-          \ env_path = dirname(Pkg.Types.Context().env.project_file);
-          \ server = LanguageServerInstance(stdin, stdout, env_path);
-          \ server.runlinter = true;
-          \ run(server);']},
-          \ 'whitelist': ['julia'],
+          \ 'cmd': {server_info->[
+          \   'julia',
+          \   '--startup-file=no',
+          \   '--history-file=no',
+          \   '--project=' . lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Project.toml'),
+          \   '-e',
+          \   '
+          \     using LanguageServer;
+          \     using Pkg;
+          \     import SymbolServer;
+          \     import StaticLint;
+          \     env_path = dirname(Pkg.Types.Context().env.project_file);
+          \     server = LanguageServerInstance(stdin, stdout, env_path);
+          \     server.runlinter = true;
+          \     run(server);
+          \ ']},
+          \ 'allowlist': ['julia'],
           \ })
   augroup end
 endif
