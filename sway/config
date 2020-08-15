@@ -194,3 +194,16 @@ bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focus
 bindsym Ctrl+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 bindsym Shift+Print exec grim -g "$(slurp)" pictures/screenshot-$(date +'%Y%m%d%H%M%S.png')
 bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
+
+#
+# Inhibit idle
+#
+for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [class="Firefox"] inhibit_idle fullscreen
+
+#
+# Media keys
+#
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks 
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
