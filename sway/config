@@ -186,6 +186,7 @@ bar {
 exec thunderbird
 exec hexchat
 exec redshift -m wayland
+exec nm-applet --indicator
 
 #
 # Screenshots
