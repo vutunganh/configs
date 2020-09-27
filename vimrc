@@ -6,7 +6,6 @@ if g:has_plugin_manager
   " Easy editing
   Plug 'machakann/vim-sandwich'
   Plug 'tpope/vim-commentary'
-  Plug 'Raimondi/delimitMate'
   Plug 'tommcdo/vim-lion'
   " Additional keybindings
   Plug 'tpope/vim-unimpaired'
