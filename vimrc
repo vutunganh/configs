@@ -24,6 +24,8 @@ if g:has_plugin_manager
   Plug 'maxmellon/vim-jsx-pretty'
   " Julia
   Plug 'JuliaEditorSupport/julia-vim'
+  " LaTeX
+  Plug 'lervag/vimtex'
   " Editor config
   Plug 'editorconfig/editorconfig-vim'
 
@@ -246,6 +248,11 @@ augroup END
 " > vim-jsx-pretty
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vim_jsx_pretty_colorful_config = 1
+
+
+" > vimtex
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor = 'latex'
 
 
 endif
