@@ -94,8 +94,8 @@ set spelllang+=cs
 if !exists("g:syntax_on")
   syntax enable           " enables syntax highlighting
 endif
-set background=dark 
-colorscheme elflord
+set background=light 
+colorscheme morning
 set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines

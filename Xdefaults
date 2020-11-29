@@ -1,5 +1,5 @@
-URxvt.background: Black
-URxvt.foreground: Gray
+URxvt.background: Beige
+URxvt.foreground: Black
 URxvt.font: xft:Monospace:pixelsize=11
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
