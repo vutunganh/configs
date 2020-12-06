@@ -59,7 +59,7 @@ autocmd BufReadPost *
       \ endif
 runtime macros/matchit.vim " matchit plugin adds html tags matching
 set path+=**    " fuzzy find from cwd
-set completeopt=menuone,popup,noinsert,noselect
+set completeopt=menuone,preview,noinsert,noselect
 
 
 " > Editing
