@@ -1,4 +1,4 @@
-URxvt.background: Beige
+URxvt.background: White
 URxvt.foreground: Black
 URxvt.font: xft:Monospace:pixelsize=11
 URxvt.scrollBar: true
