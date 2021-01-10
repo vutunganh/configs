@@ -1,6 +1,6 @@
 URxvt.background: White
 URxvt.foreground: Black
-URxvt.font: xft:Monospace:pixelsize=11
+URxvt.font: xft:Monospace:pixelsize=12
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
 URxvt.secondaryScreen: 1
