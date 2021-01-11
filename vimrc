@@ -95,7 +95,7 @@ if !exists("g:syntax_on")
   syntax enable           " enables syntax highlighting
 endif
 set background=light 
-colorscheme morning
+colorscheme peachpuff
 set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
