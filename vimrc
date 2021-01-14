@@ -28,6 +28,8 @@ if g:has_plugin_manager
   Plug 'lervag/vimtex'
   " Editor config
   Plug 'editorconfig/editorconfig-vim'
+  " Colorscheme
+  Plug 'NLKNguyen/papercolor-theme'
 
   call plug#end()
 endif
@@ -95,7 +97,7 @@ if !exists("g:syntax_on")
   syntax enable           " enables syntax highlighting
 endif
 set background=light 
-colorscheme peachpuff
+colorscheme PaperColor
 set number                " shows line number
 set showcmd               " shows currently entered command
 set laststatus=2          " all windows have status lines
