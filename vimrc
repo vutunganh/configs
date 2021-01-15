@@ -96,6 +96,7 @@ set spelllang+=cs
 if !exists("g:syntax_on")
   syntax enable           " enables syntax highlighting
 endif
+set t_Co=256
 set background=light 
 colorscheme PaperColor
 set number                " shows line number
