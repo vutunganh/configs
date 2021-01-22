@@ -154,7 +154,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 3
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 3
 
 # Autostart
-exec --no-startup-id feh --bg-scale ~/pictures/wallpaper.jpg
+exec --no-startup-id systemd-run --on-active=0 --on-calendar="*:0/5" --user -- feh --no-fehbg --bg-scale --randomize ~/pictures/wallpapers
 exec --no-startup-id redshift-gtk
 exec thunderbird
 exec --no-startup-id nm-applet
