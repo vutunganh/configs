@@ -164,6 +164,7 @@ if g:has_plugin_manager
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_highlight_references_enabled = 1
+let g:asyncomplete_auto_completeopt = 0
 " Debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
