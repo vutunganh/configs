@@ -19,12 +19,12 @@ set $term urxvt
 # Note: it's recommended that you pass the final command to sway
 set $menu rofi -combi-modi "run,drun" -show combi
 set $screenlock swaylock -f -c 000000
-exec systemctl --user import-environment SWAYSOCK
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+exec systemd-run --on-active=0 --on-calendar="*:0/5" --user -- swaybg -i $(find ~/pictures/wallpapers -type f | shuf -n 1)
+
 #
 # Example configuration:
 #
