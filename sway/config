@@ -39,6 +39,9 @@ exec swayidle -w \
               resume 'swaymsg "output * dpms on"' \
          before-sleep "$screenlock"
 
+### Notifications configuration
+exec mako
+
 ### Input configuration
 #
 # Keyboard:
