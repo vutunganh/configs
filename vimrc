@@ -259,4 +259,14 @@ let g:vim_jsx_pretty_colorful_config = 1
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 
+" Custom keybindings to work with vim-sandwich
+nmap sde <plug>(vimtex-env-delete)
+nmap sdc <plug>(vimtex-cmd-delete)
+nmap sd$ <plug>(vimtex-env-delete-math)
+nmap sdd <plug>(vimtex-delim-delete)
+nmap sre <plug>(vimtex-env-change)
+nmap src <plug>(vimtex-cmd-change)
+nmap sr$ <plug>(vimtex-env-change-math)
+nmap srd <plug>(vimtex-delim-change-math)
+
 endif
