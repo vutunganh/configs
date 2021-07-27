@@ -148,7 +148,7 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -R
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # Screen
-bindsym Control+$mod+L exec i3lock -c 000000 -u
+bindsym Control+$mod+L exec i3lock
 
 # Autostart
 exec --no-startup-id systemd-run --on-active=0 --on-calendar="*:0/5" --user -- feh --no-fehbg --bg-scale --randomize ~/pictures/wallpapers
