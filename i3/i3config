@@ -157,10 +157,10 @@ exec --no-startup-id pasystray
 exec thunderbird
 
 # Screenshooting
-set $make_screenshot "maim -f png -u"
-set $screenshot_dest "~/pictures/screenshots/$(date +%s).png"
+set $make_screenshot maim -f png -u
+set $screenshot_dest ~/pictures/screenshots/$(date +%Y-%m-%d-%H-%M-%S-%N).png
 bindsym --release Print exec --no-startup-id $make_screenshot $screenshot_dest
 bindsym --release Shift+Print exec --no-startup-id $make_screenshot -s $screenshot_dest
 bindsym --release Mod1+Print exec --no-startup-id $make_screenshot -i $screenshot_dest
-bindsym --release Control+Print exec --no-startup-id $make_screenshot "| xclip -selection clipboard -t image/png"
+bindsym --release Control+Print exec --no-startup-id $make_screenshot | xclip -selection clipboard -t image/png
 bindsym --release Control+Shift+Print exec --no-startup-id $make_screenshot -s | xclip -selection clipboard -t image/png
