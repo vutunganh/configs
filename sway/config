@@ -205,10 +205,3 @@ bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
 #
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [class="Firefox"] inhibit_idle fullscreen
-
-#
-# Media keys
-#
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks

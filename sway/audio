@@ -1,0 +1,8 @@
+## Start pipewire as a PulseAudio replacement
+exec pipewire
+exec pipewire-pulse
+
+## Keybindings
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume $audio_sink -2%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $audio_sink +2%
+bindsym XF86AudioMute exec pactl set-sink-mute $audio_sink toggle
