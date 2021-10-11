@@ -144,9 +144,6 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN
 bindsym Control+$mod+L exec $screen_locker
 
 # Autostart
-exec --no-startup-id systemd-run --on-active=0 --on-calendar="*:0/5" --user -- feh --no-fehbg --bg-scale --randomize ~/pictures/wallpapers
-exec --no-startup-id redshift-gtk
-exec --no-startup-id pasystray
 exec thunderbird
 
 # Screenshooting
