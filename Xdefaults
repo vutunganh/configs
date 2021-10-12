@@ -1,5 +1,3 @@
-URxvt.background: White
-URxvt.foreground: Black
 URxvt.font: xft:Monospace:pixelsize=12
 URxvt.scrollBar: true
 URxvt.scrollBar_right: true
@@ -11,5 +9,23 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 URxvt.perl-ext-common: new-window
 URxvt.keysym.Control-Shift-N: perl:new-window
-URXvt.color4: #4295f4
-URxvt.color12: #4295f4
+
+! Papercolor theme
+URxvt.foreground: #4D4D4C
+URxvt.background: #EEEEEE
+URxvt.color0: #EDEDED
+URxvt.color8: #969694
+URxvt.color1: #D7005F
+URxvt.color9: #D7005F
+URxvt.color2: #718C00
+URxvt.color10: #718C00
+URxvt.color3: #D75F00
+URxvt.color11: #D75F00
+URxvt.color4: #4271AE
+URxvt.color12: #4271AE
+URxvt.color5: #8959A8
+URxvt.color13: #8959A8
+URxvt.color6: #3E999F
+URxvt.color14: #3E999F
+URxvt.color7: #4D4D4C
+URxvt.color15: #F5F5F5
