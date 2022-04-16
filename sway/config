@@ -17,7 +17,7 @@ set $right l
 set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu wofi -S run,drun -t $term -i | xargs swaymsg exec --
+set $menu rofi -combi-modi "run,drun,window" -modi combi -show combi | xargs swaymsg exec --
 set $screenlock swaylock -f -c 000000
 
 ### Output configuration
