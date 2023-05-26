@@ -201,3 +201,8 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 
 bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
+
+#
+# Wallpaper
+#
+exec swaybg -m fit -o \* -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
