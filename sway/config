@@ -203,5 +203,6 @@ bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
 #
 # Inhibit idle
 #
-for_window [app_id="firefox"] inhibit_idle fullscreen
-for_window [class="Firefox"] inhibit_idle fullscreen
+# For fullscreen apps
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
