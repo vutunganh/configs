@@ -198,3 +198,6 @@ bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
 # For fullscreen apps
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
+
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
