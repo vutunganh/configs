@@ -240,6 +240,19 @@ if executable('julia')
 endif
 
 
+" > Python LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('pyls')
+  augroup lsp_python
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'pyls',
+          \ 'cmd': {server_info->['pyls']},
+          \ 'whitelist': ['python'],
+          \ })
+  augroup end
+endif
+
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup commentary
