@@ -267,6 +267,11 @@ augroup END
 let g:vim_jsx_pretty_colorful_config = 1
 
 
+" > vim-sandwich
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+runtime macros/sandwich/keymap/surround.vim
+
+
 " > vimtex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_flavor = 'latex'
