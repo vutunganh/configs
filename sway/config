@@ -17,7 +17,8 @@ set $right l
 set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu rofi -combi-modi "run,drun,window" -modi combi -show combi | xargs swaymsg exec --
+set $menu exec $term --app-id=launcher -e bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'
+for_window [app_id="^launcher$"] floating enable, border none, opacity 0.8
 set $screenlock swaylock -f -c 000000
 
 ### Output configuration
