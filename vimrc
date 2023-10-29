@@ -154,6 +154,14 @@ augroup typescript
   autocmd Filetype typescriptreact set filetype=typescript.tsx
 augroup END
 
+" > Python
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup python
+  autocmd!
+  autocmd FileType python set softtabstop=4 shiftwidth=4
+  autocmd FileType python let g:pyindent_open_paren = 'shiftwidth()'
+augroup END
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " > PLUGIN CONFIGS BEGIN HERE
