@@ -14,6 +14,8 @@ if g:has_plugin_manager
   Plug 'raymond-w-ko/vim-niji'
   " UNIX Helper
   Plug 'tpope/vim-eunuch'
+  " Wayland clipboard anywhere
+  Plug 'kana/vim-fakeclip'
   " Autocomplete
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
