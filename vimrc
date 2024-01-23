@@ -253,13 +253,13 @@ endif
 
 " > Python LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if executable('pylsp')
+if executable('pyright-langserver')
   augroup lsp_python
     autocmd!
     autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'pylsp',
-          \ 'cmd': {server_info->['pylsp']},
-          \ 'whitelist': ['python'],
+          \ 'name': 'pyright',
+          \ 'cmd': {server_info->['pyright-langserver', '--stdio']},
+          \ 'allowlist': ['python'],
           \ })
   augroup end
 endif
