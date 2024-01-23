@@ -174,6 +174,7 @@ if g:has_plugin_manager
 " > Vim-lsp
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lsp_diagnostics_enabled = 1
+let g:lsp_document_highlight_enabled = 1
 let g:lsp_highlight_references_enabled = 1
 let g:asyncomplete_auto_completeopt = 0
 " Debugging
@@ -182,6 +183,7 @@ let g:asyncomplete_auto_completeopt = 0
 
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
   if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
 endfunction
 
