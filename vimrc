@@ -288,6 +288,7 @@ runtime macros/sandwich/keymap/surround.vim
 
 " > vimtex
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimtex_view_general_viewer='evince'
 let g:tex_flavor = 'latex'
 
 endif
