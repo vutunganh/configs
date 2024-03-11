@@ -9,6 +9,7 @@ URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 URxvt.perl-ext-common: new-window
 URxvt.keysym.Control-Shift-N: perl:new-window
+URxvt.keysym.Control-l: command:\033c
 
 ! Papercolor theme
 URxvt.foreground: #4D4D4C
