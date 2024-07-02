@@ -16,6 +16,8 @@ if g:has_plugin_manager
   Plug 'tpope/vim-eunuch'
   " Wayland clipboard anywhere
   Plug 'jasonccox/vim-wayland-clipboard'
+  " Background shell commands
+  Plug 'tpope/vim-dispatch'
   " Autocomplete
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
