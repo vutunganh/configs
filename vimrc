@@ -36,6 +36,8 @@ if g:has_plugin_manager
   Plug 'NLKNguyen/papercolor-theme'
   " Jinja (Flask's default templating engine)
   Plug 'lepture/vim-jinja'
+  " Rust
+  Plug 'rust-lang/rust.vim'
 
   call plug#end()
 endif
