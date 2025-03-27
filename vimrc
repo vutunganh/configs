@@ -34,6 +34,8 @@ if g:has_plugin_manager
   Plug 'editorconfig/editorconfig-vim'
   " Colorscheme
   Plug 'NLKNguyen/papercolor-theme'
+  " Jinja (Flask's default templating engine)
+  Plug 'lepture/vim-jinja'
 
   call plug#end()
 endif
@@ -267,12 +269,23 @@ if executable('pyright-langserver')
   augroup end
 endif
 
+" > Rust LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('rust-analyzer')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rust-analyzer',
+        \ 'cmd': ['rust-analyzer'],
+        \ 'allowlist': ['rust'],
+        \ })
+endif
+
 " > Commentary
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup commentary
   autocmd!
   autocmd FileType c setlocal commentstring=//\ %s
   autocmd FileType cpp setlocal commentstring=//\ %s
+  autocmd FileType jinja setlocal commentstring={#\ %s\ #}
 augroup END
 
 
