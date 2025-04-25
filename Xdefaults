@@ -4,10 +4,10 @@ URxvt.scrollBar_right: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.saveLines: 99999
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-lib: /home/tung/.urxvt/extensions
+URxvt.perl-ext-common: default,matcher,new-window
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
-URxvt.perl-ext-common: new-window
 URxvt.keysym.Control-Shift-N: perl:new-window
 URxvt.keysym.Control-l: command:\033c
 
