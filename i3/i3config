@@ -148,7 +148,7 @@ exec thunderbird
 
 # Screenshooting
 set $make_screenshot maim -f png -u
-set $screenshot_dest ~/pictures/screenshots/$(date +%Y-%m-%d-%H-%M-%S-%N).png
+set $screenshot_dest ~/Pictures/screenshots/$(date +%Y-%m-%d-%H-%M-%S-%N).png
 bindsym --release Print exec --no-startup-id $make_screenshot $screenshot_dest
 bindsym --release Shift+Print exec --no-startup-id $make_screenshot -s $screenshot_dest
 bindsym --release Mod1+Print exec --no-startup-id $make_screenshot -i $screenshot_dest
