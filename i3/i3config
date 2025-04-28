@@ -140,6 +140,9 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 2%+ && pkill -R
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
+bar {
+  status_command i3blocks
+}
 # Screen
 bindsym Control+$mod+L exec $screen_locker
 
