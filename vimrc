@@ -38,6 +38,8 @@ if g:has_plugin_manager
   Plug 'lepture/vim-jinja'
   " Rust
   Plug 'rust-lang/rust.vim'
+  " Golang
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
   call plug#end()
 endif
