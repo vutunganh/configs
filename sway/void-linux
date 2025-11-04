@@ -1,4 +1,6 @@
 # Necessary to get file chooser (and possibly more) working in Firefox.
 # https://www.reddit.com/r/voidlinux/comments/u5k9h0/comment/i52f0gy/?utm_source=share&utm_medium=web2x&context=3.
-exec /usr/libexec/xdg-desktop-portal --replace
-exec /usr/libexec/xdg-desktop-portal-gtk --replace
+exec env XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway dbus-update-activation-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+exec env XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway /usr/libexec/xdg-desktop-portal-wlr --replace
+exec env XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway /usr/libexec/xdg-desktop-portal-gtk --replace
+exec env XDG_SESSION_TYPE=wayland XDG_CURRENT_DESKTOP=sway /usr/libexec/xdg-desktop-portal --replace
