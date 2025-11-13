@@ -28,6 +28,7 @@ function mkcd() {
 
 # --- Git-Aware Prompt ---
 # Load zsh's version control info system
+autoload -Uz compinit && compinit
 autoload -Uz vcs_info
 
 # Configure vcs_info for git
