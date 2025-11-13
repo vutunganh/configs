@@ -186,6 +186,11 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_document_highlight_enabled = 1
 let g:lsp_highlight_references_enabled = 1
 let g:asyncomplete_auto_completeopt = 0
+" Enable real-time diagnostics
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_virtual_text_enabled = 1
 " Debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
@@ -287,6 +292,45 @@ if executable('pyright-langserver')
           \ })
   augroup end
 endif
+
+" > Go LSP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('gopls') || executable(expand('~/go/bin/gopls'))
+  augroup lsp_go
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'gopls',
+          \ 'cmd': {server_info->executable('gopls') ? ['gopls'] : [expand('~/go/bin/gopls')]},
+          \ 'allowlist': ['go'],
+          \ 'config': {
+          \   'gopls': {
+          \     'staticcheck': v:true,
+          \     'analyses': {
+          \       'unusedparams': v:true,
+          \       'shadow': v:true,
+          \     },
+          \   },
+          \ },
+          \ })
+  augroup end
+endif
+
+" > vim-go configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable vim-go's LSP features to avoid conflicts with vim-lsp
+let g:go_def_mapping_enabled = 0
+let g:go_code_completion_enabled = 0
+let g:go_gopls_enabled = 0
+let g:go_diagnostics_enabled = 0
+" Keep vim-go's useful features
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
 
 " > Rust LSP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
