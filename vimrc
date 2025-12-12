@@ -170,6 +170,9 @@ augroup python
   autocmd!
   autocmd FileType python set softtabstop=4 shiftwidth=4
   autocmd FileType python let g:pyindent_open_paren = 'shiftwidth()'
+  autocmd FileType python let g:python_indent = {}
+  autocmd FileType python let g:python_indent.disable_parentheses_indenting = 1
+  autocmd FileType python let g:python_indent.closed_paren_align_last_line = 0
 augroup END
 
 
