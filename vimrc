@@ -71,7 +71,7 @@ autocmd BufReadPost *
       \ endif
 runtime macros/matchit.vim " matchit plugin adds html tags matching
 set path+=**    " fuzzy find from cwd
-set completeopt=menuone,preview,noinsert,noselect,popup
+set completeopt=menuone,noinsert,noselect,popup
 set noswapfile
 filetype plugin indent on
 
@@ -171,7 +171,7 @@ augroup python
   autocmd FileType python set softtabstop=4 shiftwidth=4
   autocmd FileType python let g:pyindent_open_paren = 'shiftwidth()'
   autocmd FileType python let g:python_indent = {}
-  autocmd FileType python let g:python_indent.disable_parentheses_indenting = 1
+  autocmd FileType python let g:python_indent.disable_parentheses_indenting = 0
   autocmd FileType python let g:python_indent.closed_paren_align_last_line = 0
 augroup END
 
@@ -194,6 +194,12 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_diagnostics_float_cursor = 1
 let g:lsp_diagnostics_signs_enabled = 1
 let g:lsp_diagnostics_virtual_text_enabled = 1
+let g:lsp_settings_root_markers = ['.git', 'pyproject.toml', 'package.json', '.gitignore']
+let g:lsp_preview_float = 1
+let g:lsp_diagnostics_float_cursor = 1
+let g:lsp_preview_autoclose = 1
+let g:lsp_insert_text_enabled = 1 " Helps with snippet-like completions
+let g:lsp_text_edit_enabled = 1
 " Debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
