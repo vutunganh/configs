@@ -14,6 +14,8 @@ if g:has_plugin_manager
   Plug 'raymond-w-ko/vim-niji'
   " UNIX Helper
   Plug 'tpope/vim-eunuch'
+  " Git helper
+  Plug 'tpope/vim-fugitive'
   " Wayland clipboard anywhere
   Plug 'jasonccox/vim-wayland-clipboard'
   " Background shell commands
